@@ -2,14 +2,6 @@
   description = "NixLand configuration";
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # nixpkgs-firefox.url =
-    # "github:nixos/nixpkgs?rev=c4a9c4f8d2f1196e4b08dc8477b2575ee4e3e3be";
-    # nixpkgs.url = "github:diniamo/nixpkgs/nvidia-555";
-    # nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.05";
-    # nixpkgs-master.url =
-    # "github:nixos/nixpkgs?rev=65f5cbb5f29450dc32a2835aeb8cabfca2fedc09";
-    # nixpkgs-nvidia.url = "github:diniamo/nixpkgs/nvidia-555";
-
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -18,18 +10,22 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     ags.url = "github:Aylur/ags";
-
     hyprland.url = "github:hyprwm/hyprland";
     # hyprland.url =
     #   "git+https://github.com/hyprwm/Hyprland?ref=refs/tags/v0.46.2&submodules=1";
     xdg-portal-hyprland.url = "github:hyprwm/xdg-desktop-portal-hyprland";
-    # hyprlock = { url = "github:hyprwm/Hyprlock/"; };
-
-    my-shell = { url = "github:cenunix/astal"; };
-    # anyrun.url = "github:fufexan/anyrun/launch-prefix";
-    walker.url = "github:abenz1267/walker";
+    # obsidian-nvim.url = "github:epwalsh/obsidian.nvim";
+    nvf = {
+      url = "github:notashelf/nvf";
+      # You can override the input nixpkgs to follow your system's
+      # instance of nixpkgs. This is safe to do as nvf does not depend
+      # on a binary cache.
+      inputs.nixpkgs.follows = "nixpkgs";
+      # Optionally, you can also override individual plugins
+      # for example:
+      # inputs.obsidian-nvim.follows = "obsidian-nvim"; # <- this will use the obsidian-nvim from your inputs
+    };
     # personal neovim flake
     nvim-flake = { url = "github:cenunix/nvim-flake"; };
     # zellij status-bar plugin

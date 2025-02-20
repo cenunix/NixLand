@@ -45,9 +45,9 @@
         gpu-screen-recorder.enable = true;
         gaming = {
           enable = true;
-          steam.enable = true;
+          steam.enable = false;
           chess.enable = false;
-          minecraft.enable = true;
+          minecraft.enable = false;
           gamescope.enable = false;
         };
         default = {

@@ -5,5 +5,5 @@
     "btop/btop.conf".source = ./config/btop.conf;
 
   };
-  home.packages = with pkgs; [ btop ];
+  home.packages = with pkgs; [ btop-rocm ];
 }

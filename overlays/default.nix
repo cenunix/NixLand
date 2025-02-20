@@ -2,33 +2,6 @@
 { inputs, ... }: {
   # This one brings our custom packages from the 'pkgs' directory
   additions = final: _prev: import ../pkgs { pkgs = final; };
-  #When applied, the unstable nixpkgs set (declared in the flake inputs) will
-  # be accessible through 'pkgs.unstable'
-  # unstable-packages = final: _prev: {
-  #   unstable = import inputs.nixpkgs-master {
-  #     config.allowUnfree = true;
-  #     system = final.system;
-  #   };
-  # };
-  # firefox-packages = final: _prev: {
-  #   firefox-packages = import inputs.nixpkgs-firefox {
-  #     system = final.system;
-  #     config.allowUnfree = true;
-  #   };
-  # };
-  # master-packages = final: _prev: {
-  #   master-packages = import inputs.nixpkgs-master {
-  #     system = final.system;
-  #     config.allowUnfree = true;
-  #   };
-  # };
-  # stable-packages = final: _prev: {
-  #   stable-packages = import inputs.nixpkgs-stable {
-  #     system = final.system;
-  #     config.allowUnfree = true;
-  #   };
-  # };
-
   # When applied, the stable nixpkgs set (declared in the flake inputs) will
   # be accessible through 'pkgs.stable'
   # stable-packages = final: _prev: {
