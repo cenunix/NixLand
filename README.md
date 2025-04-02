@@ -29,14 +29,12 @@
 
 ## Overview
 
-- **Home-Manager** - Manages Installation/Configuration of Hyprland (the best
-  wayland compositor), Terminals, Graphical Apps, etc.
-- **Modules** - Manage Options Per System, Reduce Reduntant Code and Switch
+- **Home-Manager** - Manages Home Directory Configuration, mostly (dot)files
+- **Modules** - Curate Options Per System, Reduce Reduntant Code and Switch
   Program Defaults
 - **Flake** - Easily Lock Versions of Inputs and Maintain the Reproducible
   Nature of NixOS
-- **Editor** - Simple and Efficient Neovim Configuration Written In Lua For
-  Compatibility
+- **Editor** - Simple and Efficient Neovim Configuration Using Nvf to Leverage Nix and Neovim
 - **Theming** - Dark Catppuccin Palette For Maximum Reddit Upvotes
 - **Other Software**
   - **Browser**: Firefox
