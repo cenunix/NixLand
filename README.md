@@ -24,9 +24,7 @@
 </div>
 </h1>
 <div align="center">
-<b>A Romantic Gathering Between NixOS and Hyprland</b>
-  <br>
-  -With Catppuccin Watching From The Closet
+<b>NixOS Configuration for Multi-System Management</b>
 </div>
 
 ## Overview
@@ -45,7 +43,7 @@
   - **File-Manager**: Lf/Thunar
   - **Terminal**: Kitty/Foot
   - **Launcher**: Anyrun
-  - **Bar**: Waybar
+  - **Bar**: Hyprpanel
 
 ## Desktop preview
 
