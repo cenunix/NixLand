@@ -34,7 +34,7 @@
   Program Defaults
 - **Flake** - Easily Lock Versions of Inputs and Maintain the Reproducible
   Nature of NixOS
-- **Editor** - Simple and Efficient Neovim Configuration Using Nvf to Leverage Nix and Neovim
+- **Editor** - Nvf for a Flexible and Reproducible Neovim Config
 - **Theming** - Dark Catppuccin Palette For Maximum Reddit Upvotes
 - **Other Software**
   - **Browser**: Firefox
