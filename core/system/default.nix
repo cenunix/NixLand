@@ -1,0 +1,19 @@
+{
+  inputs,
+  pkgs,
+  config,
+  osConfig,
+  ...
+}:
+{
+  imports = [
+    ./login
+    ./wayland
+    ./xdg
+    ./network.nix
+    ./audio.nix
+    ./misc.nix
+    ./gpu.nix
+    ./security.nix
+  ];
+}
