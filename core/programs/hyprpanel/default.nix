@@ -52,6 +52,7 @@ with lib;
               "weather"
               "hyprsunset"
               "clock"
+              "battery"
               "notifications"
             ];
           };

@@ -28,7 +28,7 @@ in
     };
     programs = {
       gnome-disks.enable = true;
-      # nm-applet.enable = true;
+      nm-applet.enable = true;
       dconf.enable = true;
       wireshark.enable = true;
       seahorse.enable = true;

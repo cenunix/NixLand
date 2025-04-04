@@ -30,20 +30,16 @@ in
           wofi
           wpa_supplicant_gui
           obsidian
-          # wofi-bluetooth
           gsettings-desktop-schemas
-          # nicotine-plus
           swww
           hyprpicker
           gnome-podcasts
           python39
           grimblast
-          # cider-2
           libreoffice
           libnotify
           jellyfin-media-player
           thunderbird
-          # protonmail-desktop
           telegram-desktop
           bitwarden-desktop
 
@@ -56,9 +52,8 @@ in
           imv
           nextcloud-client
           virtiofsd
-          # here is some command line tools I use frequently
-          # feel free to add your own or remove some of them
 
+          # command line tools I use frequently
           neofetch
           nnn # terminal file manager
 
@@ -74,6 +69,7 @@ in
           yq-go # yaml processor https://github.com/mikefarah/yq
           eza # A modern replacement for ‘ls’
           fzf # A command-line fuzzy finder
+          killall
 
           # networking tools
           mtr # A network diagnostic tool
