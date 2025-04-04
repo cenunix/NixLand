@@ -20,7 +20,6 @@ let
   acceptedTypes = [
     "desktop"
     "laptop"
-    "armlaptop"
   ];
 in
 {

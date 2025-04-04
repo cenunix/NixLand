@@ -7,11 +7,14 @@
   osConfig,
   ...
 }:
+with lib;
 let
+  device = config.modules.device;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
+  acceptedTypes = ["desktop"];
 in
 {
-  hm = {
+  hm = mkIf (builtins.elem device.type acceptedTypes) {
     imports = [
       inputs.spicetify-nix.homeManagerModules.spicetify
     ];

@@ -27,6 +27,7 @@ with lib;
         "vm-intel"
         "amd"
         "vm-amd"
+        "snapdragon"
         null
       ];
       default = null;
@@ -42,6 +43,7 @@ with lib;
         "nvidia"
         "hybrid-nv"
         "hybrid-amd"
+        "adreno"
         null
       ];
       default = null;
