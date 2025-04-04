@@ -19,7 +19,7 @@
     ./firefox.nix
     ./git.nix
     ./kitty.nix
-    ./nvf.nix
+    # ./nvf.nix
     ./signal.nix
     ./spotify.nix
     ./thunar.nix

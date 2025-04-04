@@ -59,7 +59,7 @@
           system = "aarch64-linux";
           specialArgs = { inherit inputs; };
           modules = [
-            ./hosts/europa
+            ./hosts/callisto
           ];
         };
 
