@@ -28,7 +28,7 @@ in
     };
     programs = {
       gnome-disks.enable = true;
-      nm-applet.enable = true;
+      # nm-applet.enable = true;
       dconf.enable = true;
       wireshark.enable = true;
       seahorse.enable = true;
@@ -47,12 +47,12 @@ in
         ];
         enable = true;
       };
-      samba-wsdd = {
-        enable = true;
-        openFirewall = true;
-        discovery = true;
-        hostname = "SMBNIX";
-      };
+      # samba-wsdd = {
+      #   enable = true;
+      #   openFirewall = true;
+      #   discovery = true;
+      #   hostname = "SMBNIX";
+      # };
     };
 
     nixpkgs.config.joypixels.acceptLicense = true;
