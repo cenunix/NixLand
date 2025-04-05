@@ -8,6 +8,9 @@
   ...
 }:
 with lib;
+let
+  device = config.modules.device;
+in
 {
   nixpkgs.overlays = [
     inputs.hyprpanel.overlay
@@ -66,18 +69,23 @@ with lib;
               "workspaces"
             ];
             middle = [ "media" ];
-            right = [
-              "volume"
-              "network"
-              "ram"
-              "weather"
-              "hyprsunset"
-              "bluetooth"
-              "systray"
-              "battery"
-              "clock"
-              "notifications"
-            ];
+            right =
+              [
+                "volume"
+                "network"
+                "ram"
+                "weather"
+                "hyprsunset"
+                "bluetooth"
+                "systray"
+                "clock"
+              ]
+              ++ optionals (device.type == "armlaptop") [
+                "battery"
+              ]
+              ++ [
+                "notifications"
+              ];
           };
           "1" = {
             left = [

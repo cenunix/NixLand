@@ -4,12 +4,14 @@
   lib,
   config,
   pkgs,
+  osConfig,
   ...
 }:
 let
+  fileManager = config.modules.programs.default.fileManager;
   browser = [ "firefox.desktop" ];
   zathura = [ "org.pwmt.zathura.desktop.desktop" ];
-  filemanager = [ "dolphin.desktop" ];
+  # filemanager = [ "thunar.desktop" ];
 
   associations = {
     "text/html" = browser;
@@ -32,12 +34,11 @@ let
     "application/pdf" = zathura;
     "x-scheme-handler/tg" = [ "telegramdesktop.desktop" ];
     "x-scheme-handler/spotify" = [ "spotify.desktop" ];
-    "x-scheme-handler/discord" = [ "WebCord.desktop" ];
-    "inode/directory" = filemanager;
+    "x-scheme-handler/discord" = [ "discord.desktop" ];
+    "inode/directory" = [ "${fileManager}.desktop" ];
   };
 in
 {
-  imports = [ ./ninja.nix ];
   hm = {
     xdg = {
       enable = true;

@@ -14,12 +14,6 @@
     flake = "/home/cenunix/NixLand";
   };
   nix = {
-    # commented in favor of nh.clean for now
-    # gc = {
-    #   automatic = true;
-    #   dates = "weekly";
-    #   options = "--delete-older-than 1w";
-    # };
     settings = {
       extra-experimental-features = [
         "flakes"

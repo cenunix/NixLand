@@ -16,16 +16,6 @@ in
 {
   config = mkIf (builtins.elem device.type acceptedTypes) {
     # enable polkit for privilege escalation
-    security = {
-      sudo = {
-        enable = true;
-        execWheelOnly = true;
-        extraConfig = ''
-          Defaults passwd_timeout=0
-          Defaults timestamp_timeout=10'';
-      };
-      polkit.enable = true;
-    };
     programs = {
       gnome-disks.enable = true;
       nm-applet.enable = true;
@@ -47,12 +37,6 @@ in
         ];
         enable = true;
       };
-      # samba-wsdd = {
-      #   enable = true;
-      #   openFirewall = true;
-      #   discovery = true;
-      #   hostname = "SMBNIX";
-      # };
     };
 
     nixpkgs.config.joypixels.acceptLicense = true;

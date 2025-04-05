@@ -6,16 +6,6 @@
 }:
 with lib;
 let
-  # use the latest possible nvidia package
-  nvStable = config.boot.kernelPackages.nvidiaPackages.stable.version;
-  nvBeta = config.boot.kernelPackages.nvidiaPackages.beta.version;
-
-  nvidiaPackage =
-    if (versionOlder nvBeta nvStable) then
-      config.boot.kernelPackages.nvidiaPackages.stable
-    else
-      config.boot.kernelPackages.nvidiaPackages.beta;
-
   device = config.modules.device;
   env = config.modules.usrEnv;
 in
@@ -28,22 +18,6 @@ in
       {
         videoDrivers = [ "nvidia" ];
       }
-
-      # xorg settings
-      (mkIf (!env.isWayland) {
-        # disable DPMS
-        monitorSection = ''
-          Option "DPMS" "false"
-        '';
-
-        # disable screen blanking in general
-        serverFlagsSection = ''
-          Option "StandbyTime" "0"
-          Option "SuspendTime" "0"
-          Option "OffTime" "0"
-          Option "BlankTime" "0"
-        '';
-      })
     ];
 
     boot = {
@@ -68,18 +42,9 @@ in
           # GBM_BACKEND = "nvidia-drm"; # breaks firefox apparently
           VDPAU_DRIVER = "va_gl";
         })
-
-        (mkIf ((env.isWayland) && (device.gpu == "hybrid-nv")) {
-          #__NV_PRIME_RENDER_OFFLOAD = "1";
-          # WLR_DRM_DEVICES = mkDefault "/dev/dri/card1:/dev/dri/card0";
-        })
       ];
       systemPackages = with pkgs; [
         glxinfo
-        # vulkan-tools
-        # vulkan-loader
-        # vulkan-validation-layers
-        # glmark2
         libva
         libva-utils
         xorg.libxcb
@@ -103,18 +68,9 @@ in
         #   # patches = [ rcu_patch ];
         # };
         modesetting.enable = mkDefault true;
-        prime.offload.enableOffloadCmd = device.gpu == "hybrid-nv";
-        # powerManagement = {
-        #   enable = mkDefault true;
-        #   finegrained = mkDefault true;
-        # };
 
-        # use open source drivers by default, hosts may override this option if their gpu is
-        # not supported by the open source dexplicit sync.rivers
         open = true;
-        nvidiaSettings = false; # add nvidia-settings to pkgs, useless on nixos
-        # nvidiaPersistenced = true;
-        # forceFullCompositionPipeline = true;
+        nvidiaSettings = false;
       };
 
       graphics = {

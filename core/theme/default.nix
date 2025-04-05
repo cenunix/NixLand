@@ -10,12 +10,10 @@ let
 in
 {
   imports = [
-    ./qt
     ./gtk.nix
     inputs.stylix.nixosModules.stylix
   ];
   hm.stylix = {
-    # targets.spicetify.enable = false;
     targets.nvf.enable = false;
   };
   stylix = {
