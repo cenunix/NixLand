@@ -37,6 +37,7 @@
     };
     wg-quick.interfaces = {
       wg0 = {
+        autostart = false;
         address = [
           "10.177.100.76/32"
           "fd7d:76ee:e68f:a993:c1c9:1e68:ee1e:d818/128"

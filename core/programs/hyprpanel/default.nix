@@ -19,6 +19,45 @@ with lib;
       hyprland.enable = true;
       overwrite.enable = true;
 
+      settings = {
+        theme = {
+          font = {
+            name = "Inter";
+            size = "0.85rem";
+          };
+          bar.transparent = true;
+          bar.outer_spacing = "0.2em";
+        };
+        bar = {
+          clock.format = "%a %b %d  %I:%M %p";
+          launcher.autoDetectIcon = true;
+        };
+
+        menus = {
+          dashboard = {
+            shortcuts.enabled = false;
+            directories.enabled = false;
+            stats.enable_gpu = true;
+          };
+
+          clock = {
+            time = {
+              military = true;
+              hideSeconds = true;
+            };
+
+            weather = {
+              unit = "imperial";
+              key = "adbcdae597534595a7771155250703";
+              location = "Alderwood Manor";
+            };
+          };
+
+          transition = "slide_down";
+          transitionTime = 100;
+        };
+
+      };
       layout = {
         bar.layouts = {
           "0" = {
@@ -35,6 +74,7 @@ with lib;
               "hyprsunset"
               "bluetooth"
               "systray"
+              "battery"
               "clock"
               "notifications"
             ];
@@ -52,7 +92,6 @@ with lib;
               "weather"
               "hyprsunset"
               "clock"
-              "battery"
               "notifications"
             ];
           };
@@ -483,44 +522,6 @@ with lib;
               text = "#cdd6f4";
             };
           };
-        };
-      };
-
-      settings = {
-        bar = {
-          clock.format = "%a %b %d  %I:%M %p";
-          launcher.autoDetectIcon = true;
-        };
-
-        menus = {
-          dashboard = {
-            shortcuts.enabled = false;
-            directories.enabled = false;
-            stats.enable_gpu = true;
-          };
-
-          clock = {
-            time = {
-              military = true;
-              hideSeconds = true;
-            };
-
-            weather = {
-              unit = "imperial";
-              key = "adbcdae597534595a7771155250703";
-              location = "Alderwood Manor";
-            };
-          };
-
-          transition = "slide_down";
-          transitionTime = 100;
-        };
-
-        theme = {
-          font.name = "Inter";
-          font.size = "0.85rem";
-          bar.transparent = true;
-          bar.outer_spacing = "0.2em";
         };
       };
 

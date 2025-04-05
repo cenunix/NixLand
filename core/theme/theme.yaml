@@ -7,7 +7,7 @@ palette:
   base01: "#11111b" # mantle
   base02: "#181825" # surface0
   base03: "#1e1e2e" # surface1
-  base04: "#313244" # surface2
+  base04: "#585b70" # surface2
   base05: "#cdd6f4" # text
   base06: "#f5e0dc" # rosewater
   base07: "#b4befe" # lavender
