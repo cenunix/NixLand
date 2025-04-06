@@ -12,15 +12,32 @@ let
 in
 {
   config = mkIf sys.video.enable {
+
+    # xdg.portal = {
+    #   enable = true;
+    #   xdgOpenUsePortal = true;
+    #   config = {
+    #     common.default = [ "gtk" ];
+    #     hyprland.default = [
+    #       "gtk"
+    #       "hyprland"
+    #     ];
+    #   };
+    #
+    #   extraPortals = [
+    #     pkgs.xdg-desktop-portal-gtk
+    #   ];
+    # };
     xdg.portal = {
       enable = true;
 
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk
-        pkgs.xdg-desktop-portal-hyprland
+        # pkgs.xdg-desktop-portal-hyprland
       ];
 
       xdgOpenUsePortal = true;
+      # config.common.default = "gtk";
       config = {
         common = {
           "org.freedesktop.impl.portal.Screenshot" = "hyprland";
