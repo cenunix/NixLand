@@ -20,31 +20,26 @@ with lib;
     enable = true;
     withUWSM = true;
   };
+
   environment.systemPackages = with pkgs; [
     wlr-randr
     wl-clipboard
     hyprsunset
     grimblast
   ];
-  # fake a tray to let apps start
-  # https://github.com/nix-community/home-manager/issues/2064
-  # TEST ME
-  # hm.systemd.user.targets.tray = {
-  #   Unit = {
-  #     Description = "Home Manager System Tray";
-  #     Requires = [ "graphical-session-pre.target" ];
-  #   };
-  # };
 
-  hm.wayland.windowManager.hyprland = {
-    enable = true;
-    package = null;
-    portalPackage = null;
+  hm = {
+    wayland.windowManager.hyprland = {
+      enable = true;
+      package = null;
+      portalPackage = null;
 
-    systemd = {
-      enable = false;
-      # variables = [ "--all" ];
+      systemd = {
+        enable = false;
+      };
+    };
+    services.hyprpaper = {
+      enable = true;
     };
   };
-
 }

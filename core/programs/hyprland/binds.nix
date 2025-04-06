@@ -47,7 +47,7 @@ in
       "$mod, I, exec, hyprlock"
       "$mod, Return, exec, ${default.terminal}"
       "$mod, E, exec, ${default.fileManager}"
-      "$mod, R, exec, killall astal; astal; killall swww-daemon; swww-daemon"
+      # "$mod, R, exec, killall astal; astal; killall swww-daemon; swww-daemon"
       "$mod, U, exec, ags -b hypr -r 'recorder.start()'"
       "$mod, P, exec, grimblast --notify copysave output"
       "$mod SHIFT, P, exec, grimblast --notify copysave area"

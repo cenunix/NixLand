@@ -30,7 +30,7 @@ in
     exec-once = [
       "hyprctl setcursor ${pointerCursor.name} ${toString pointerCursor.size}"
       "hyprsunset --temperature 5700"
-      "swww-daemon --format xrgb"
+      # "swww-daemon --format xrgb"
       # "blueman-applet"
     ];
     input = {

@@ -31,7 +31,7 @@ in
           wpa_supplicant_gui
           obsidian
           gsettings-desktop-schemas
-          swww
+          # swww
           hyprpicker
           gnome-podcasts
           python39
