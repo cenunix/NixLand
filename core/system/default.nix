@@ -12,8 +12,9 @@
     ./xdg
     ./network.nix
     ./audio.nix
-    ./misc.nix
+    ./direnv.nix
     ./gpu.nix
+    ./misc.nix
     ./security.nix
   ];
 }
