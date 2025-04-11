@@ -15,6 +15,7 @@
       libgsf # odf files
       ffmpegthumbnailer
       kdePackages.ark # GUI archiver for thunar archive plugin
+      unrar
       sshfs # FUSE-based filesystem that allows remote filesystems to be mounted over SSH
       fuse
       cifs-utils

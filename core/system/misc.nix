@@ -22,6 +22,7 @@ in
       dconf.enable = true;
       wireshark.enable = true;
       seahorse.enable = true;
+      nix-ld.enable = true;
     };
     services = {
       udisks2.enable = true;

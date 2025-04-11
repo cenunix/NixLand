@@ -12,8 +12,15 @@ in
 with lib;
 {
   config = mkIf modules.programs.gaming.enable {
+    environment.systemPackages = with pkgs; [
+      protonplus
+      retroarch-full
+      lutris
+      wineWowPackages.waylandFull
+    ];
     programs.steam = {
-      enable = false;
+      enable = true;
+      protontricks.enable = true;
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
     hm.programs.mangohud = {

@@ -47,6 +47,7 @@ in
           bitwarden
           darkreader
           vimium-c
+          user-agent-string-switcher
         ];
         bookmarks = { };
         settings = mkMerge [

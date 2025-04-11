@@ -19,7 +19,7 @@ in
   stylix = {
     enable = true;
     base16Scheme = ./theme.yaml;
-    image = ./images/catppuccin-wanderer.jpg;
+    image = ./images/wall.png;
     fonts = {
       serif = {
         package = pkgs.inter-nerdfont;
