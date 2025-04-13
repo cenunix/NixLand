@@ -19,7 +19,7 @@ in
   stylix = {
     enable = true;
     base16Scheme = ./theme.yaml;
-    image = ./images/wall.png;
+    image = ./images/blue-sky.jpg;
     fonts = {
       serif = {
         package = pkgs.inter-nerdfont;

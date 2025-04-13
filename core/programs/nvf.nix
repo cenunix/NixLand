@@ -311,7 +311,11 @@ in
           enable = true;
           extensions.render-markdown-nvim.enable = true;
         };
-        python.enable = true;
+        python = {
+          enable = true;
+          format.enable = true;
+          lsp.enable = true;
+        };
         lua = {
           enable = true;
         };
