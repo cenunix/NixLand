@@ -5,7 +5,7 @@
 }:
 {
   hm.imports = [
-    inputs.anyrun.homeManagerModules.default
+    # inputs.anyrun.homeManagerModules.default
   ];
 
   hm.programs = {
