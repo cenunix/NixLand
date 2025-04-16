@@ -41,6 +41,9 @@ in
             shortcuts.enabled = false;
             directories.enabled = false;
             stats.enable_gpu = true;
+            powermenu = {
+              avatar.image = "/home/cenunix/Media/Pictures/pfps/omni-man-drip.jpg";
+            };
           };
 
           clock = {
@@ -67,6 +70,22 @@ in
             left = [
               "dashboard"
               "workspaces"
+              "windowtitle"
+            ];
+            middle = [ "media" ];
+            right = [
+              "volume"
+              "ram"
+              "weather"
+              "hyprsunset"
+              "clock"
+              "notifications"
+            ];
+          };
+          "1" = {
+            left = [
+              "dashboard"
+              "workspaces"
             ];
             middle = [ "media" ];
             right =
@@ -87,11 +106,10 @@ in
                 "notifications"
               ];
           };
-          "1" = {
+          "2" = {
             left = [
               "dashboard"
               "workspaces"
-              "windowtitle"
             ];
             middle = [ "media" ];
             right = [
@@ -99,6 +117,7 @@ in
               "ram"
               "weather"
               "hyprsunset"
+              "bluetooth"
               "clock"
               "notifications"
             ];
