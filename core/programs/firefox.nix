@@ -31,15 +31,15 @@ in
           privateDefault = "Kagi";
           order = [
             "Kagi"
-            "DuckDuckGo"
-            "Google"
+            "ddg"
+            "google"
           ];
           engines = {
             "Kagi" = {
               urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
-              iconUpdateURL = "https://kagi.com/favicon.ico";
+              icon = "https://kagi.com/favicon.ico";
             };
-            "Bing".metaData.hidden = true;
+            "bing".metaData.hidden = true;
           };
         };
         extensions.packages = with addons; [

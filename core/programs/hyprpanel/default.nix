@@ -65,64 +65,88 @@ in
 
       };
       layout = {
-        bar.layouts = {
-          "0" = {
-            left = [
-              "dashboard"
-              "workspaces"
-              "windowtitle"
-            ];
-            middle = [ "media" ];
-            right = [
-              "volume"
-              "ram"
-              "weather"
-              "hyprsunset"
-              "clock"
-              "notifications"
-            ];
-          };
-          "1" = {
-            left = [
-              "dashboard"
-              "workspaces"
-            ];
-            middle = [ "media" ];
-            right =
-              [
-                "volume"
-                "network"
-                "ram"
-                "weather"
-                "hyprsunset"
-                "bluetooth"
-                "systray"
-                "clock"
-              ]
-              ++ optionals (device.type == "armlaptop") [
-                "battery"
-              ]
-              ++ [
-                "notifications"
-              ];
-          };
-          "2" = {
-            left = [
-              "dashboard"
-              "workspaces"
-            ];
-            middle = [ "media" ];
-            right = [
-              "volume"
-              "ram"
-              "weather"
-              "hyprsunset"
-              "bluetooth"
-              "clock"
-              "notifications"
-            ];
-          };
-        };
+        bar.layouts =
+          if device.type == "armlaptop" then
+            {
+              "0" = {
+                left = [
+                  "dashboard"
+                  "workspaces"
+                ];
+                middle = [ "media" ];
+                right = [
+                  "volume"
+                  "network"
+                  "ram"
+                  "weather"
+                  "hyprsunset"
+                  "bluetooth"
+                  "systray"
+                  "clock"
+                  "battery"
+                  "notifications"
+                ];
+              };
+            }
+          else
+            {
+              "0" = {
+                left = [
+                  "dashboard"
+                  "workspaces"
+                  "windowtitle"
+                ];
+                middle = [ "media" ];
+                right = [
+                  "volume"
+                  "ram"
+                  "weather"
+                  "hyprsunset"
+                  "clock"
+                  "notifications"
+                ];
+              };
+              "1" = {
+                left = [
+                  "dashboard"
+                  "workspaces"
+                ];
+                middle = [ "media" ];
+                right =
+                  [
+                    "volume"
+                    "network"
+                    "ram"
+                    "weather"
+                    "hyprsunset"
+                    "bluetooth"
+                    "systray"
+                    "clock"
+                  ]
+                  ++ optionals (device.type == "armlaptop") [
+                    "battery"
+                  ]
+                  ++ [
+                    "notifications"
+                  ];
+              };
+              "2" = {
+                left = [
+                  "dashboard"
+                  "workspaces"
+                ];
+                middle = [ "media" ];
+                right = [
+                  "volume"
+                  "ram"
+                  "weather"
+                  "hyprsunset"
+                  "bluetooth"
+                  "clock"
+                  "notifications"
+                ];
+              };
+            };
       };
 
       override = {
@@ -551,7 +575,6 @@ in
           };
         };
       };
-
     };
   };
 }

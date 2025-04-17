@@ -26,7 +26,7 @@
       programs = {
         cli.enable = true;
         gui.enable = true;
-        # gpu-screen-recorder.enable = true;
+        gpu-screen-recorder.enable = false;
         gaming = {
           enable = false;
           steam.enable = false;

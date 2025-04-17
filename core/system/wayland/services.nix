@@ -15,9 +15,11 @@ in
 {
   config = mkIf env.isWayland {
     services.xserver.enable = true;
-    environment.systemPackages = with pkgs; [
-      gpu-screen-recorder-gtk
-    ];
+    environment.systemPackages =
+      with pkgs;
+      mkIf programs.gpu-screen-recorder.enable [
+        gpu-screen-recorder-gtk
+      ];
 
     systemd.services = {
       seatd = {
