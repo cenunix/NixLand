@@ -50,7 +50,6 @@ in
           pulsemixer
           pulseaudio
           imv
-          nextcloud-client
           virtiofsd
 
           # command line tools I use frequently
