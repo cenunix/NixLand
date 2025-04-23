@@ -17,6 +17,7 @@ with lib;
       retroarch-full
       lutris
       wineWowPackages.waylandFull
+      pokemmo-installer
     ];
     programs.steam = {
       enable = true;
