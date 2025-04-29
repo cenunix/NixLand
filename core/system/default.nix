@@ -16,5 +16,6 @@
     ./gpu.nix
     ./misc.nix
     ./security.nix
+    ./virt.nix
   ];
 }

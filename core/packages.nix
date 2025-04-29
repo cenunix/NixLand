@@ -30,11 +30,11 @@ in
           wofi
           wpa_supplicant_gui
           obsidian
+          zathura
           gsettings-desktop-schemas
           # swww
           hyprpicker
           gnome-podcasts
-          python39
           grimblast
           libreoffice
           libnotify

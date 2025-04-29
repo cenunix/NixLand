@@ -7,7 +7,7 @@ let
 in
 {
   hm.home.packages = [
-    (pkgs.signal-desktop.overrideAttrs (
+    (pkgs.signal-desktop-bin.overrideAttrs (
       finalAttrs: previousAttrs: {
         buildInputs = previousAttrs.buildInputs ++ [ pkgs.asar ];
         postInstall = ''
