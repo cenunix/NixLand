@@ -7,6 +7,10 @@
 {
 
   hm.programs = {
+    wezterm = {
+      enable = true;
+      enableZshIntegration = true;
+    };
     dircolors = {
       enable = true;
       enableZshIntegration = true;

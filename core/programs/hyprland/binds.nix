@@ -20,47 +20,55 @@ let
   );
 in
 {
-  hm.wayland.windowManager.hyprland.settings = {
-    bindm = [
-      "$mod, mouse:272, movewindow"
-      "$mod, mouse:273, resizewindow"
-    ];
+  hm.wayland.windowManager.hyprland = {
+    # extraConfig = ''
+    #   bind=CTRL,ALT_L,submap,passthrough
+    #   submap=passthrough
+    #   bindr=CTRL,Escape,submap,reset
+    #   submap=reset
+    # '';
+    settings = {
+      bindm = [
+        "$mod, mouse:272, movewindow"
+        "$mod, mouse:273, resizewindow"
+      ];
 
-    bind = [
-      "$mod, M, exit"
-      "$mod, Q, killactive"
-      "$mod, F, fullscreen"
-      "$mod SHIFT, SPACE, togglefloating"
-      "$mod, y, movetoworkspace, special"
-      "$mod, t, togglespecialworkspace"
-      "$mod, h, movefocus, l"
-      "$mod, l, movefocus, r"
-      "$mod, k, movefocus, u"
-      "$mod, j, movefocus, d"
-      "$mod SHIFT, h, movewindow, l"
-      "$mod SHIFT, l, movewindow, r"
-      "$mod SHIFT, k, movewindow, u"
-      "$mod SHIFT, j, movewindow, d"
-      "$mod, B, movecurrentworkspacetomonitor, DP-1"
-      "$mod SHIFT, B, movecurrentworkspacetomonitor, DP-2"
+      bind = [
+        "$mod, M, exit"
+        "$mod, Q, killactive"
+        "$mod, F, fullscreen"
+        "$mod SHIFT, SPACE, togglefloating"
+        "$mod, y, movetoworkspace, special"
+        "$mod, t, togglespecialworkspace"
+        "$mod, h, movefocus, l"
+        "$mod, l, movefocus, r"
+        "$mod, k, movefocus, u"
+        "$mod, j, movefocus, d"
+        "$mod SHIFT, h, movewindow, l"
+        "$mod SHIFT, l, movewindow, r"
+        "$mod SHIFT, k, movewindow, u"
+        "$mod SHIFT, j, movewindow, d"
+        "$mod, B, movecurrentworkspacetomonitor, DP-1"
+        "$mod SHIFT, B, movecurrentworkspacetomonitor, DP-2"
 
-      "$mod, I, exec, hyprlock"
-      "$mod, Return, exec, ${default.terminal}"
-      "$mod, E, exec, ${default.fileManager}"
-      # "$mod, R, exec, killall astal; astal; killall swww-daemon; swww-daemon"
-      "$mod, U, exec, ags -b hypr -r 'recorder.start()'"
-      "$mod, P, exec, grimblast --notify copysave output"
-      "$mod SHIFT, P, exec, grimblast --notify copysave area"
-      "$mod SHIFT, P, exec, ags -b hypr -r 'recorder.screenshot(true)'"
-      "$mod, SPACE, exec, anyrun"
-    ] ++ workspaces;
+        "$mod, I, exec, hyprlock"
+        "$mod, Return, exec, ${default.terminal}"
+        "$mod, E, exec, ${default.fileManager}"
+        # "$mod, R, exec, killall astal; astal; killall swww-daemon; swww-daemon"
+        "$mod, U, exec, ags -b hypr -r 'recorder.start()'"
+        "$mod, P, exec, grimblast --notify copysave output"
+        "$mod SHIFT, P, exec, grimblast --notify copysave area"
+        "$mod SHIFT, P, exec, ags -b hypr -r 'recorder.screenshot(true)'"
+        "$mod, SPACE, exec, anyrun"
+      ] ++ workspaces;
 
-    bindle = [
-      ", XF86MonBrightnessUp,exec,brightnessctl s 5%+"
-      ", XF86MonBrightnessDown,exec,brightnessctl s 5%-"
-      ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
-      ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
-      ", XF86AudioMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
-    ];
+      bindle = [
+        ", XF86MonBrightnessUp,exec,brightnessctl s 5%+"
+        ", XF86MonBrightnessDown,exec,brightnessctl s 5%-"
+        ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
+        ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
+        ", XF86AudioMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+      ];
+    };
   };
 }

@@ -94,17 +94,25 @@ in
                 left = [
                   "dashboard"
                   "workspaces"
-                  "windowtitle"
                 ];
                 middle = [ "media" ];
-                right = [
-                  "volume"
-                  "ram"
-                  "weather"
-                  "hyprsunset"
-                  "clock"
-                  "notifications"
-                ];
+                right =
+                  [
+                    "volume"
+                    "network"
+                    "ram"
+                    "weather"
+                    "hyprsunset"
+                    "bluetooth"
+                    "systray"
+                    "clock"
+                  ]
+                  ++ optionals (device.type == "armlaptop") [
+                    "battery"
+                  ]
+                  ++ [
+                    "notifications"
+                  ];
               };
               "1" = {
                 left = [

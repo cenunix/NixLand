@@ -78,12 +78,12 @@ in
         "md3_decel, 0.05, 0.7, 0.1, 1"
       ];
       animation = [
-        "windowsIn, 1, 3, md3_decel, slide"
-        "windowsOut, 1, 3, md3_decel, slide"
-        "windowsMove, 1, 3, md3_decel, slide"
-        "fade, 1, 3, md3_decel"
-        "workspaces, 1, 3, md3_decel"
-        "specialWorkspace, 1, 3, md3_decel,slide"
+        "windowsIn, 1, 2.5, md3_decel, slide"
+        "windowsOut, 1, 2.5, md3_decel, slide"
+        "windowsMove, 1, 2.5, md3_decel, slide"
+        "fade, 1, 2.5, md3_decel"
+        "workspaces, 1, 2.5, md3_decel"
+        "specialWorkspace, 1, 2.5, md3_decel,slide"
       ];
     };
     render = {
