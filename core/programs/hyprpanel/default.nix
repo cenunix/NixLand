@@ -21,8 +21,8 @@ in
       enable = true;
       hyprland.enable = true;
       overwrite.enable = true;
-
       settings = {
+        scalingPriority = "hyprland";
         theme = {
           font = {
             name = "Inter";
