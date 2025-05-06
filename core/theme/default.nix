@@ -33,7 +33,7 @@ in
 
       monospace = {
         package = pkgs.maple-mono.NF-CN;
-        name = "Maple Mono SC NF";
+        name = "Maple Mono NF";
       };
 
       emoji = {

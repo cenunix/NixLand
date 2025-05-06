@@ -30,7 +30,7 @@ in
 
       options = {
         shell = "zsh";
-        guifont = "Maple Mono SC NF:h14";
+        guifont = "Inter Nerd Font:h14";
         termguicolors = true;
         undofile = true;
         smartindent = true;
@@ -148,6 +148,21 @@ in
         name = "catppuccin";
         style = "mocha";
         transparent = true;
+      };
+      utility = {
+        preview = {
+          markdownPreview = {
+            enable = true;
+          };
+        };
+        images = {
+          image-nvim = {
+            enable = true;
+            setupOpts = {
+              backend = "kitty";
+            };
+          };
+        };
       };
       statusline.lualine = {
         enable = true;

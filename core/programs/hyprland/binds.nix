@@ -53,6 +53,7 @@ in
 
         "$mod, I, exec, hyprlock"
         "$mod, Return, exec, ${default.terminal}"
+        "$mod SHIFT, Return, exec, ${default.terminal} start --always-new-process"
         "$mod, E, exec, ${default.fileManager}"
         # "$mod, R, exec, killall astal; astal; killall swww-daemon; swww-daemon"
         "$mod, U, exec, ags -b hypr -r 'recorder.start()'"
