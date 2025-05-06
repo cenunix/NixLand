@@ -35,7 +35,7 @@
           gamescope.enable = false;
         };
         default = {
-          terminal = "kitty";
+          terminal = "wezterm";
           fileManager = "thunar";
         };
         override = { };
