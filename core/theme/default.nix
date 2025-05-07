@@ -15,6 +15,7 @@ in
   ];
   hm.stylix = {
     targets.nvf.enable = false;
+    targets.firefox.enable = false;
   };
   stylix = {
     enable = true;
