@@ -27,6 +27,9 @@ in
       vimAlias = true;
       preventJunkFiles = true;
       enableLuaLoader = true;
+      extraPackages = with pkgs; [
+        fd
+      ];
 
       options = {
         shell = "zsh";
@@ -153,14 +156,40 @@ in
             enable = true;
           };
         };
-        images = {
-          image-nvim = {
-            enable = true;
-            setupOpts = {
-              backend = "kitty";
+        snacks-nvim = {
+          enable = true;
+          setupOpts = {
+            explorer = {
+              replace_netrw = true;
+            };
+            picker = {
+              layout = {
+                preset = "ivy";
+              };
+              # preview = true;
+              sources = {
+                explorer = {
+                  jump = {
+                    close = true;
+                  };
+                  # auto_close = true;
+                  layout = {
+                    preset = "telescope";
+                    preview = true;
+                  };
+                };
+              };
             };
           };
         };
+        # images = {
+        #   image-nvim = {
+        #     enable = true;
+        #     setupOpts = {
+        #       backend = "kitty";
+        #     };
+        #   };
+        # };
       };
       statusline.lualine = {
         enable = true;
@@ -260,7 +289,7 @@ in
       telescope.enable = true;
       filetree = {
         neo-tree = {
-          enable = true;
+          enable = false;
           setupOpts = {
             git_status_async = true;
             window = {
