@@ -39,22 +39,20 @@ in
         shiftround = true;
         expandtab = true;
         cursorline = true;
+        textwidth = 80;
+        wrap = true;
+        linebreak = true;
         relativenumber = true;
         number = true;
         viminfo = "";
         viminfofile = "NONE";
-        wrap = false;
         clipboard = "unnamedplus";
         splitright = true;
         splitbelow = true;
         laststatus = 0;
-        cmdheight = 0;
+        cmdheight = 1;
       };
 
-      lsp = {
-        enable = true;
-        formatOnSave = true;
-      };
       binds.whichKey = {
         enable = true;
         register = {
@@ -277,16 +275,22 @@ in
           };
         };
       };
+      snippets = {
+        luasnip.enable = true;
+      };
       autocomplete.blink-cmp = {
         enable = true;
         friendly-snippets.enable = true;
 
         # setupOpts.keymap.preset = "default";
-        setupOpts.completion.menu.auto_show = false;
+        # setupOpts.completion.menu.auto_show = false;
         setupOpts = {
+          snippets = {
+            preset = "luasnip";
+          };
           completion = {
             ghost_text = {
-              enabled = true;
+              enabled = false;
             };
           };
         };
@@ -294,6 +298,35 @@ in
           close = "<C-e>";
           confirm = "<C-y>";
         };
+      };
+      formatter = {
+        conform-nvim = {
+          enable = true;
+          setupOpts.format_on_save = {
+            lsp_format = "fallback";
+            timeout_ms = 500;
+            enabled = true;
+            callbacks = {
+              # wrap your Lua function in a Nix multi-line string:
+              start = ''
+                function(bufnr)
+                  vim.notify("Conform formatting: " .. vim.api.nvim_buf_get_name(bufnr))
+                  print("Conform formatting:", vim.api.nvim_buf_get_name(bufnr))
+                end
+              '';
+              done = ''
+                function(bufnr, paths)
+                  print("Conform finished:", vim.api.nvim_buf_get_name(bufnr))
+                end
+              '';
+            };
+          };
+        };
+      };
+      lsp = {
+        enable = true;
+        formatOnSave = true;
+        lspkind.enable = true;
       };
       languages = {
         enableLSP = true;
@@ -324,6 +357,8 @@ in
         go.enable = true;
         markdown = {
           enable = true;
+          format.enable = true;
+          lsp.enable = true;
           extensions.render-markdown-nvim.enable = true;
         };
         python = {
