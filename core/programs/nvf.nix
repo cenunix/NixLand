@@ -29,6 +29,7 @@ in
       enableLuaLoader = true;
       extraPackages = with pkgs; [
         fd
+        imagemagick
       ];
 
       options = {
@@ -54,6 +55,7 @@ in
         splitbelow = true;
         laststatus = 0;
         cmdheight = 1;
+        winborder = "rounded";
       };
 
       binds.whichKey = {
@@ -77,7 +79,7 @@ in
             separator = "➜";
             group = "";
           };
-          win.border = "none";
+          # win.border = "none";
           triggers = [
             {
               "@" = "<leader>";
@@ -89,18 +91,44 @@ in
       keymaps = [
         (mkKeymap "n" "<leader>w" "<cmd>w<cr>" "Save Buffer")
         (mkKeymap "n" "<leader>q" "<cmd>q<cr>" "Quit")
-        (mkKeymap "n" "<leader>e" ":Neotree action=focus reveal toggle<cr>" "Toggle Neotree")
+        (mkKeymap "n" "<leader>e" "<cmd>lua require('snacks').explorer()<cr>" "Explorer")
+        # (mkKeymap "n" "<leader>e" ":Neotree action=focus reveal toggle<cr>" "Toggle Neotree")
         (mkKeymap "n" "<leader>c" ":bdelete!<CR>" "Close Buffer")
 
         # Telescope
-        (mkKeymap "n" "<leader>ff" "<cmd>Telescope find_files<cr>" "Find File")
-        (mkKeymap "n" "<leader>fr" "<cmd>Telescope oldfiles<cr>" "Open Recent File")
+        # (mkKeymap "n" "<leader>ff" "<cmd>Telescope find_files<cr>" "Find File")
+        # (mkKeymap "n" "<leader>fr" "<cmd>Telescope oldfiles<cr>" "Open Recent File")
+        # (mkKeymap "n" "<leader>fn" "<cmd>enew<cr>" "New File")
+        # (mkKeymap "n" "<leader>fw" "<cmd>Telescope live_grep<cr>" "Grep Files")
+        # (mkKeymap "n" "<leader>fb" "<cmd>Telescope buffers<cr>" "Grep Buffers")
+        # (mkKeymap "n" "<leader>fh" "<cmd>Telescope help_tags<cr>" "Grep Help Tags")
+        # (mkKeymap "n" "<leader>fd" "<cmd>Telescope diagnostics<cr>" "Grep Diagnostics")
+        # (mkKeymap "n" "<leader>fg" "<cmd>Telescope git_files<cr>" "Grep Git Files")
+
+        # Snacks Picker Replaces Telescope!?
+        # Find files
+        (mkKeymap "n" "<leader>ff" "<cmd>lua require('snacks').picker.files()<cr>" "Find File")
+
+        # Recent files
+        (mkKeymap "n" "<leader>fr" "<cmd>lua require('snacks').picker.recent()<cr>" "Open Recent File")
+
+        # New buffer
         (mkKeymap "n" "<leader>fn" "<cmd>enew<cr>" "New File")
-        (mkKeymap "n" "<leader>fw" "<cmd>Telescope live_grep<cr>" "Grep Files")
-        (mkKeymap "n" "<leader>fb" "<cmd>Telescope buffers<cr>" "Grep Buffers")
-        (mkKeymap "n" "<leader>fh" "<cmd>Telescope help_tags<cr>" "Grep Help Tags")
-        (mkKeymap "n" "<leader>fd" "<cmd>Telescope diagnostics<cr>" "Grep Diagnostics")
-        (mkKeymap "n" "<leader>fg" "<cmd>Telescope git_files<cr>" "Grep Git Files")
+
+        # Grep (live grep)
+        (mkKeymap "n" "<leader>fw" "<cmd>lua require('snacks').picker.grep()<cr>" "Grep Files")
+
+        # Buffers
+        (mkKeymap "n" "<leader>fb" "<cmd>lua require('snacks').picker.buffers()<cr>" "Grep Buffers")
+
+        # Help tags
+        (mkKeymap "n" "<leader>fh" "<cmd>lua require('snacks').picker.help()<cr>" "Grep Help Tags")
+
+        # Diagnostics
+        (mkKeymap "n" "<leader>fd" "<cmd>lua require('snacks').picker.diagnostics()<cr>" "Grep Diagnostics")
+
+        # Git files
+        (mkKeymap "n" "<leader>fg" "<cmd>lua require('snacks').picker.git_files()<cr>" "Grep Git Files")
 
         # Terminal
         (mkKeymap "n" "<leader>tt" "<cmd>ToggleTerm<cr>" "Toggle Terminal")
@@ -164,7 +192,7 @@ in
             };
             picker = {
               layout = {
-                preset = "ivy";
+                preset = "telescope";
               };
               # preview = true;
               sources = {
@@ -178,6 +206,14 @@ in
                     preview = true;
                   };
                 };
+              };
+            };
+            image = {
+              enabled = true;
+              doc = {
+                float = true;
+                max_width = 20;
+                max_height = 10;
               };
             };
           };
@@ -194,16 +230,16 @@ in
       statusline.lualine = {
         enable = true;
         theme = "catppuccin";
+        componentSeparator = {
+          right = "";
+          left = "";
+        };
+        sectionSeparator = {
+          right = "";
+          left = "";
+        };
         setupOpts = {
           icons_enabled = true;
-          section_separators = {
-            left = "";
-            right = "";
-          };
-          component_separators = {
-            left = "";
-            right = "";
-          };
           disabled_filetypes = {
             statusline = [ ];
             winbar = [ ];
@@ -263,6 +299,8 @@ in
                  return mode_map[vim.api.nvim_get_mode().mode] or '__'
                end
             end)(),
+            separator = { left = '' },
+            right_padding = 2
           }"
         ];
         activeSection.b = [
@@ -270,10 +308,18 @@ in
             {
               "branch",
               icon = ' •',
+              separator = { right = ''},
             }
           ''
         ];
-        activeSection.c = [ ];
+        activeSection.c = [
+          ''
+            {
+              "filename",
+              icon = '',  
+            }
+          ''
+        ];
         activeSection.x = [ ];
         activeSection.y = [ ];
         activeSection.z = [ ];
@@ -318,11 +364,24 @@ in
             preset = "luasnip";
           };
           completion = {
+            #   menu = {
+            #     border = "single";
+            #   };
+            #   documentation = {
+            #     window = {
+            #       border = "single";
+            #     };
+            #   };
             ghost_text = {
               enabled = false;
             };
           };
         };
+        # signature = {
+        #   window = {
+        #     border = "single";
+        #   };
+        # };
         mappings = {
           close = "<C-e>";
           confirm = "<C-y>";
@@ -412,7 +471,7 @@ in
       };
       tabline = {
         nvimBufferline = {
-          enable = true;
+          enable = false;
           setupOpts = {
             options = {
               sort_by = "insert_at_end";
