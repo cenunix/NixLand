@@ -76,6 +76,7 @@ in
       (mkKeymap "n" "<leader>fh" "<cmd>lua require('snacks').picker.help()<cr>" "Grep Help Tags")
       (mkKeymap "n" "<leader>fg" "<cmd>lua require('snacks').picker.git_files()<cr>" "Grep Git Files")
       (mkKeymap "n" "<leader>fd" "<cmd>lua require('snacks').picker.diagnostics()<cr>" "Grep Diagnostics")
+      (mkKeymap "n" "<leader>fc" "<cmd>lua require('aerial').snacks_picker()<cr>" "Code Outline")
       # Terminal
       (mkKeymap "n" "<leader>tt" "<cmd>ToggleTerm<cr>" "Toggle Terminal")
       (mkKeymap "n" "<leader>tf" "<cmd>ToggleTerm direction=float<cr>" "Toggle Float Terminal")

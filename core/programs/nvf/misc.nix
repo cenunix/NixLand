@@ -9,6 +9,16 @@
 }:
 {
   hm.programs.nvf.settings.vim = {
+    extraPackages = with pkgs; [
+      fd
+      imagemagick
+    ];
+    extraPlugins = {
+      snipe = {
+        package = pkgs.vimPlugins.snipe-nvim;
+        setup = "require('snipe').setup()";
+      };
+    };
     visuals = {
       nvim-web-devicons.enable = true;
       rainbow-delimiters.enable = true;

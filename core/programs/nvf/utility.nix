@@ -14,6 +14,9 @@
         enable = true;
       };
     };
+    outline.aerial-nvim = {
+      enable = true;
+    };
     snacks-nvim = {
       enable = true;
       setupOpts = {
@@ -37,8 +40,18 @@
               };
             };
           };
-          input = { };
-          notifier = { };
+        };
+        input = {
+          enabled = true;
+        };
+        notifier = {
+          enabled = true;
+        };
+        statuscolumn = {
+          enabled = true;
+        };
+        scroll = {
+          enabled = true;
         };
         image = {
           enabled = true;

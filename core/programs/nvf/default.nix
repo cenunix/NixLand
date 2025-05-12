@@ -7,16 +7,6 @@
   osConfig,
   ...
 }:
-let
-  mkKeymap = mode: key: action: desc: {
-    inherit
-      mode
-      key
-      action
-      desc
-      ;
-  };
-in
 {
   hm.imports = [
     inputs.nvf.homeManagerModules.default
@@ -36,16 +26,6 @@ in
       vimAlias = true;
       preventJunkFiles = true;
       enableLuaLoader = true;
-      extraPackages = with pkgs; [
-        fd
-        imagemagick
-      ];
-      extraPlugins = {
-        snipe = {
-          package = pkgs.vimPlugins.snipe-nvim;
-          setup = "require('snipe').setup()";
-        };
-      };
 
       options = {
         shell = "zsh";
@@ -72,7 +52,6 @@ in
         cmdheight = 1;
         winborder = "rounded";
       };
-
     };
   };
 }
