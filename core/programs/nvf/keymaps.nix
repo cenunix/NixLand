@@ -18,7 +18,38 @@ let
   };
 in
 {
-  hm.programs.nvf = {
+  hm.programs.nvf.settings.vim = {
+    binds.whichKey = {
+      enable = true;
+      register = {
+        "<leader>f" = " Picker";
+        "<leader>g" = " Git";
+        "<leader>t" = " Terminal";
+        "<leader>l" = " LSP";
+        "<leader>c" = " Spellcheck";
+        "<leader>cl" = "󰗊 Language";
+        "<leader>o" = " Obsidian";
+        "<leader>d" = "Debug";
+        "<leader>h" = "";
+      };
+      setupOpts = {
+        preset = "classic";
+        delay = 0;
+        icons = {
+          mappings = false;
+          separator = "➜";
+          group = "";
+        };
+        # win.border = "none";
+        triggers = [
+          {
+            "@" = "<leader>";
+            mode = "n";
+          }
+        ];
+      };
+    };
+
     keymaps = [
       (mkKeymap "n" "<leader>w" "<cmd>w<cr>" "Save Buffer")
       (mkKeymap "n" "<leader>q" "<cmd>q<cr>" "Quit")
