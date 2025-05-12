@@ -31,6 +31,12 @@ in
         fd
         imagemagick
       ];
+      extraPlugins = {
+        snipe = {
+          package = pkgs.vimPlugins.snipe-nvim;
+          setup = "require('snipe').setup()";
+        };
+      };
 
       options = {
         shell = "zsh";
@@ -94,7 +100,7 @@ in
         (mkKeymap "n" "<leader>e" "<cmd>lua require('snacks').explorer()<cr>" "Explorer")
         # (mkKeymap "n" "<leader>e" ":Neotree action=focus reveal toggle<cr>" "Toggle Neotree")
         (mkKeymap "n" "<leader>c" ":bdelete!<CR>" "Close Buffer")
-
+        (mkKeymap "n" "gb" "<cmd>lua require('snipe').open_buffer_menu()<cr>" "Snipe Buffers")
         # Telescope
         # (mkKeymap "n" "<leader>ff" "<cmd>Telescope find_files<cr>" "Find File")
         # (mkKeymap "n" "<leader>fr" "<cmd>Telescope oldfiles<cr>" "Open Recent File")
