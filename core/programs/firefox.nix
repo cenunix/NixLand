@@ -27,8 +27,8 @@ in
       profiles.cenunix = {
         search = {
           force = true;
-          default = "Kagi";
-          privateDefault = "Kagi";
+          default = "google";
+          privateDefault = "google";
           order = [
             "Kagi"
             "ddg"

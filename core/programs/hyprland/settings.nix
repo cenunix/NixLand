@@ -76,14 +76,15 @@ in
         "pace, 0.46, 1, 0.29, 0.99"
         "overshot, 0.13, 0.99, 0.29, 1.1"
         "md3_decel, 0.05, 0.7, 0.1, 1"
+        "custom, 0.5, 0.5, 0.6, 0.3"
       ];
       animation = [
-        "windowsIn, 1, 2.5, md3_decel, slide"
-        "windowsOut, 1, 2.5, md3_decel, slide"
-        "windowsMove, 1, 2.5, md3_decel, slide"
-        "fade, 1, 2.5, md3_decel"
-        "workspaces, 1, 2.5, md3_decel"
-        "specialWorkspace, 1, 2.5, md3_decel,slide"
+        "windowsIn, 1, 1, custom, slide"
+        "windowsOut, 1, 1, custom, slide"
+        "windowsMove, 1, 1, custom, slide"
+        "fade, 1, 1, custom"
+        "workspaces, 1, 1.5, custom"
+        "specialWorkspace, 1, 1, custom,slide"
       ];
     };
     render = {
