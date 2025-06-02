@@ -11,6 +11,7 @@
     ./wayland
     ./xdg
     ./network.nix
+    ./ollama.nix
     ./audio.nix
     ./direnv.nix
     ./gpu.nix

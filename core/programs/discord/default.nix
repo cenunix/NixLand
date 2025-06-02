@@ -21,7 +21,7 @@ in
 
   hm = mkIf (builtins.elem device.type acceptedTypes) {
     imports = [
-      inputs.nixcord.homeManagerModules.nixcord
+      inputs.nixcord.homeModules.nixcord
     ];
     programs.nixcord = {
       enable = true;
