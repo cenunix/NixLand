@@ -48,8 +48,8 @@ in
         "$mod SHIFT, l, movewindow, r"
         "$mod SHIFT, k, movewindow, u"
         "$mod SHIFT, j, movewindow, d"
-        "$mod, B, movecurrentworkspacetomonitor, DP-1"
-        "$mod SHIFT, B, movecurrentworkspacetomonitor, DP-2"
+        "$mod, B, movecurrentworkspacetomonitor, DP-2"
+        "$mod SHIFT, B, movecurrentworkspacetomonitor, DP-1"
 
         "$mod, I, exec, hyprlock"
         "$mod, Return, exec, ${default.terminal} start --always-new-process"

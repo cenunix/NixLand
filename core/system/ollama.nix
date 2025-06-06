@@ -7,8 +7,13 @@
   ...
 }:
 {
-  services.ollama = {
-    enable = true;
-    acceleration = "cuda";
+  services = {
+    ollama = {
+      enable = true;
+      acceleration = "cuda";
+    };
+    open-webui = {
+      enable = true;
+    };
   };
 }
