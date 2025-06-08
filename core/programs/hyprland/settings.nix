@@ -64,14 +64,14 @@ in
       };
       rounding = 4;
       blur = {
-        enabled = true;
+        enabled = false;
         ignore_opacity = false;
         size = 8;
         passes = 2;
       };
     };
     animations = {
-      enabled = true;
+      enabled = false;
       bezier = [
         "pace, 0.46, 1, 0.29, 0.99"
         "overshot, 0.13, 0.99, 0.29, 1.1"
