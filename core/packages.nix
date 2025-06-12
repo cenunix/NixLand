@@ -32,7 +32,7 @@ in
           obsidian
           zathura
           gsettings-desktop-schemas
-          # swww
+          komga
           hyprpicker
           gnome-podcasts
           grimblast
