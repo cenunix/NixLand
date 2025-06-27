@@ -32,7 +32,7 @@ in
           obsidian
           zathura
           gsettings-desktop-schemas
-          komga
+          calibre
           hyprpicker
           gnome-podcasts
           grimblast
