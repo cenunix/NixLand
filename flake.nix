@@ -34,7 +34,7 @@
     wallpkgs.url = "github:NotAShelf/wallpkgs"; # no need to follow nixpkgs
     stylix.url = "github:danth/stylix";
     nixcord.url = "github:kaylorben/nixcord";
-    hyprpanel.url = "github:cenunix/HyprPanel/fix";
+    # hyprpanel.url = "github:cenunix/HyprPanel/fix";
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
     nur-atarax.url = "github:AtaraxiaSjel/nur";
   };
