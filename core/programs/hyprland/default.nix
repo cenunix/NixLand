@@ -26,6 +26,7 @@ with lib;
     wl-clipboard
     hyprsunset
     grimblast
+    brightnessctl
   ];
 
   hm = {

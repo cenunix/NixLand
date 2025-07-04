@@ -18,36 +18,36 @@
         package = pkgs.vimPlugins.snipe-nvim;
         setup = "require('snipe').setup()";
       };
-      avante-nvim = {
-        package = pkgs.vimPlugins.avante-nvim;
-        setup = "
-          require('avante').setup ({
-            mode = 'legacy',
-            provider = 'ollama',
-            cursor_applying_provider = 'ollama',
-            auto_suggestions_provider = 'ollama',
-            behaviour = {
-              enable_cursor_planning_mode = true,
-              auto_apply_diff_after_generation = true,
-              minimize_diff = true,
-              enable_token_counting = true,
-            },
-            rag_service = {
-              enabled = true, -- Enables the RAG service
-              host_mount = os.getenv('HOME'), -- Host mount path for the rag service
-              provider = 'ollama', -- The provider to use for RAG service (e.g. openai or ollama)
-              llm_model = 'qwen2.5-coder:7b', -- The LLM model to use for RAG service
-              embed_model = 'nomic-embed-text', -- The embedding model to use for RAG service
-              endpoint = 'http://localhost:11434', -- The API endpoint for RAG service
-              runner = 'nix',
-            },
-            ollama = {
-              endpoint = 'http://localhost:11434',
-              model = 'qwen2.5-coder:7b',
-            }
-          })
-        ";
-      };
+      # avante-nvim = {
+      #   package = pkgs.vimPlugins.avante-nvim;
+      #   setup = "
+      #     require('avante').setup ({
+      #       mode = 'legacy',
+      #       provider = 'ollama',
+      #       cursor_applying_provider = 'ollama',
+      #       auto_suggestions_provider = 'ollama',
+      #       behaviour = {
+      #         enable_cursor_planning_mode = true,
+      #         auto_apply_diff_after_generation = true,
+      #         minimize_diff = true,
+      #         enable_token_counting = true,
+      #       },
+      #       rag_service = {
+      #         enabled = true, -- Enables the RAG service
+      #         host_mount = os.getenv('HOME'), -- Host mount path for the rag service
+      #         provider = 'ollama', -- The provider to use for RAG service (e.g. openai or ollama)
+      #         llm_model = 'qwen2.5-coder:7b', -- The LLM model to use for RAG service
+      #         embed_model = 'nomic-embed-text', -- The embedding model to use for RAG service
+      #         endpoint = 'http://localhost:11434', -- The API endpoint for RAG service
+      #         runner = 'nix',
+      #       },
+      #       ollama = {
+      #         endpoint = 'http://localhost:11434',
+      #         model = 'qwen2.5-coder:7b',
+      #       }
+      #     })
+      #   ";
+      # };
       # minuet = {
       #   package = pkgs.vimPlugins.minuet-ai-nvim;
       #   setup = "
