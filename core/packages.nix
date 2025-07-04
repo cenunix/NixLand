@@ -36,7 +36,7 @@ in
           hyprpicker
           gnome-podcasts
           grimblast
-          libreoffice
+          # libreoffice-fresh
           libnotify
           jellyfin-media-player
           thunderbird
