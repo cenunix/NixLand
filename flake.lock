@@ -1320,6 +1320,26 @@
         "type": "github"
       }
     },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751686190,
+        "narHash": "sha256-veNnb2UVyjugo9fIeGjisMGGn0TNae71p5D1YwwEAFs=",
+        "owner": "quickshell-mirror",
+        "repo": "quickshell",
+        "rev": "87d99b866f9866db10b55c8b03632f0eecae52d8",
+        "type": "github"
+      },
+      "original": {
+        "owner": "quickshell-mirror",
+        "repo": "quickshell",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "anyrun": "anyrun",
@@ -1331,6 +1351,7 @@
         "nixpkgs": "nixpkgs_4",
         "nur-atarax": "nur-atarax",
         "nvf": "nvf",
+        "quickshell": "quickshell",
         "spicetify-nix": "spicetify-nix",
         "stylix": "stylix",
         "wallpkgs": "wallpkgs",

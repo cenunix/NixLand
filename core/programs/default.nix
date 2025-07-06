@@ -14,6 +14,7 @@
     ./hyprland
     ./hyprlock
     ./hyprpanel
+    ./quickshell
     ./lf
     ./nvf
     ./waydroid
