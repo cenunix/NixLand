@@ -27,7 +27,11 @@ in
         # Allow Kagi to store sign in for convenience
         policies = {
           Cookies = {
-            Allow = [ "https://Kagi.com" ];
+            Allow = [
+              "https://Kagi.com"
+              "https://discord.com"
+            ];
+
           };
         };
         profiles.cenunix = {
