@@ -39,7 +39,7 @@ in
         # MOZ_ENABLE_WAYLAND = "0"; # Firefox has a bug with 555 drivers rn :()
         GRIMBLAST_HIDE_CURSOR = 0; # Fixes Display reloading
         CLUTTER_BACKEND = "wayland";
-        BROWSER = "firefox";
+        BROWSER = "librewolf";
         WLR_DRM_DEVICES = "/dev/dri/card1:/dev/dri/card0";
       };
     };

@@ -117,8 +117,6 @@ in
           usbutils # lsusb
         ]
     ++ optionals (builtins.elem device.type [ "desktop" ]) [
-      ryujinx
-      plexamp
     ]
     ++ optionals (builtins.elem device.type [
       "desktop"

@@ -85,11 +85,11 @@ with lib;
 
         browser = mkOption {
           type = types.enum [
-            "firefox"
             "librewolf"
+            "firefox"
             "chromium"
           ];
-          default = "firefox";
+          default = "librewolf";
         };
 
         editor = mkOption {

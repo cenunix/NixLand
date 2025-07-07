@@ -37,7 +37,7 @@
 - **Editor** - Nvf for a Flexible and Reproducible Neovim Config
 - **Theming** - Dark Catppuccin Palette For Maximum Reddit Upvotes
 - **Other Software**
-  - **Browser**: Firefox
+  - **Browser**: Librewolf
   - **File-Manager**: Lf/Thunar
   - **Terminal**: Kitty/Foot
   - **Launcher**: Anyrun

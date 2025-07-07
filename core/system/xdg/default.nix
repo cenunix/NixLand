@@ -9,7 +9,7 @@
 }:
 let
   fileManager = config.modules.programs.default.fileManager;
-  browser = [ "firefox.desktop" ];
+  browser = [ "librewolf.desktop" ];
   zathura = [ "org.pwmt.zathura.desktop.desktop" ];
   # filemanager = [ "thunar.desktop" ];
 
