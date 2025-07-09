@@ -19,8 +19,6 @@ in
     # imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
     programs.hyprpanel = {
       enable = true;
-      # hyprland.enable = true;
-      # overwrite.enable = true;
       settings = {
         scalingPriority = "hyprland";
         theme = {
