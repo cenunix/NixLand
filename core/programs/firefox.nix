@@ -30,6 +30,8 @@ in
             Allow = [
               "https://Kagi.com"
               "https://discord.com"
+              "https://github.com"
+              "https://boot.dev"
             ];
 
           };
@@ -66,7 +68,7 @@ in
           settings = {
             "extensions.autoDisableScopes" = 0;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            "browser.startup.homepage" = "about:config";
+            # "browser.startup.homepage" = "about:config";
             "browser.uiCustomization.state" = builtins.toJSON {
               currentVersion = 20;
               newElementCount = 5;
