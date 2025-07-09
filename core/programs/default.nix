@@ -14,10 +14,10 @@
     ./hyprland
     ./hyprlock
     ./hyprpanel
-    ./quickshell
+    # ./quickshell
     ./lf
     ./nvf
-    ./waydroid
+    # ./waydroid
     ./firefox.nix
     ./git.nix
     ./kitty.nix
