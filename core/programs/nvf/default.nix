@@ -38,7 +38,7 @@
         shiftround = true;
         expandtab = true;
         cursorline = true;
-        textwidth = 80;
+        # textwidth = 80;
         wrap = true;
         linebreak = true;
         relativenumber = true;

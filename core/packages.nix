@@ -69,6 +69,7 @@ in
           eza # A modern replacement for ‘ls’
           fzf # A command-line fuzzy finder
           killall
+          go
 
           # networking tools
           mtr # A network diagnostic tool

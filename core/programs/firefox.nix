@@ -24,7 +24,6 @@ in
       librewolf = mkForce {
         enable = true;
         package = pkgs.librewolf;
-        # Allow Kagi to store sign in for convenience
         policies = {
           Cookies = {
             Allow = [
