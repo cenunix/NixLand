@@ -14,10 +14,11 @@ let
         finalAttrs: previousAttrs: {
           # ref: https://github.com/zhaodice/qemu-anti-detection
           patches = (previousAttrs.patches or [ ]) ++ [
-            (pkgs.fetchpatch {
-              url = "https://raw.githubusercontent.com/zhaodice/qemu-anti-detection/main/qemu-8.2.0.patch";
-              sha256 = "sha256-vwDS+hIBDfiwrekzcd71jmMssypr/cX1oP+Oah+xvzI=";
-            })
+            # (pkgs.fetchpatch {
+            #   url = "https://raw.githubusercontent.com/zhaodice/qemu-anti-detection/main/qemu-8.2.0.patch";
+            #   sha256 = "sha256-RG4lkSWDVbaUb8lXm1ayxvG3yc1cFdMDP1V00DA1YQE=";
+            # })
+            ./patches/spoof.patch
           ];
           postFixup =
             (previousAttrs.postFixup or "")
@@ -57,7 +58,7 @@ in
       libvirtd = {
         enable = true;
         qemu = {
-          # package = qemu-anti-detection;
+          package = qemu-anti-detection;
           ovmf.enable = true;
           ovmf.packages = [ pkgs.OVMFFull.fd ];
           swtpm.enable = true;

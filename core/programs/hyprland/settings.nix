@@ -88,7 +88,7 @@ in
       ];
     };
     render = {
-      explicit_sync = 1;
+      # explicit_sync = 1;
       # explicit_sync_kms = 0;
     };
     dwindle = {
