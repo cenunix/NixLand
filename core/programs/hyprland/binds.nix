@@ -52,6 +52,8 @@ in
         "$mod, B, movecurrentworkspacetomonitor, DP-2"
         "$mod SHIFT, B, movecurrentworkspacetomonitor, DP-1"
 
+        "$mod, V, exec, hyprctl keyword 'device[razer-razer-viper-ultimate-dongle]:enabled' false"
+        "$mod SHIFT, V, exec, hyprctl keyword 'device[razer-razer-viper-ultimate-dongle]:enabled' true"
         "$mod, I, exec, hyprlock"
         "$mod, Return, exec, ${default.terminal} start --always-new-process"
         "$mod SHIFT, Return, exec, ${default.terminal}"
@@ -62,7 +64,8 @@ in
         "$mod SHIFT, P, exec, grimblast --notify copysave area"
         "$mod SHIFT, P, exec, ags -b hypr -r 'recorder.screenshot(true)'"
         "$mod, SPACE, exec, anyrun"
-      ] ++ workspaces;
+      ]
+      ++ workspaces;
 
       bindle = [
         ", XF86MonBrightnessUp,exec,brightnessctl s 5%+"

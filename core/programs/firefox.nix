@@ -31,6 +31,9 @@ in
               "https://discord.com"
               "https://github.com"
               "https://boot.dev"
+              "https://proton.me"
+              "https://openai.com"
+              "https://youtube.com"
             ];
 
           };

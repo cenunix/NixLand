@@ -20,16 +20,20 @@ let
             # })
             ./patches/spoof.patch
           ];
-          postFixup =
-            (previousAttrs.postFixup or "")
-            + "\n"
-            + ''
-              for i in $(find $out/bin -type f -executable); do
-                mv $i "$i-anti-detection"
-              done
-            '';
-          version = "8.2.0";
-          pname = "qemu-anti-detection";
+          src = pkgs.fetchurl {
+            url = "https://download.qemu.org/qemu-${finalAttrs.version}.tar.xz";
+            hash = "sha256-73hvI5jLUYRgD2mu9NXWke/URXajz/QSbTjUxv7Id1k=";
+          };
+          # postFixup =
+          #   (previousAttrs.postFixup or "")
+          #   + "\n"
+          #   + ''
+          #     for i in $(find $out/bin -type f -executable); do
+          #       mv $i "$i-anti-detection"
+          #     done
+          #   '';
+          version = "10.0.2";
+          # pname = "qemu-anti-detection";
         }
       );
   sys = config.modules.system.virtualization;
@@ -52,6 +56,7 @@ in
       ];
 
     services.spice-vdagentd.enable = true;
+    services.qemuGuest.enable = true;
     virtualisation = mkIf (sys.qemu.enable) {
       kvmgt.enable = true;
       spiceUSBRedirection.enable = true;

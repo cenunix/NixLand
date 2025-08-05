@@ -95,82 +95,34 @@ index ea331a20d1..5582d5a0e7 100644
      build_append_int_noprefix(array, 1, 4); /* Creator Revision */
  }
  
-diff --git a/hw/arm/nseries.c b/hw/arm/nseries.c
-index 9e49e9e177..8338d1557f 100644
---- a/hw/arm/nseries.c
-+++ b/hw/arm/nseries.c
-@@ -849,7 +849,7 @@ static void n800_setup_nolo_tags(void *sram_base)
- 
-     memset(p, 0, 0x3000);
- 
--    strcpy((void *) (p + 0), "QEMU N800");
-+    strcpy((void *) (p + 0), "ASUS N800");
- 
-     strcpy((void *) (p + 8), "F5");
- 
-@@ -1152,7 +1152,7 @@ static int n8x0_atag_setup(void *p, int model)
- 
-     stw_p(w++, OMAP_TAG_LCD);			/* u16 tag */
-     stw_p(w++, 36);				/* u16 len */
--    strcpy((void *) w, "QEMU LCD panel");	/* char panel_name[16] */
-+    strcpy((void *) w, "ASUS LCD panel");	/* char panel_name[16] */
-     w += 8;
-     strcpy((void *) w, "blizzard");		/* char ctrl_name[16] */
-     w += 8;
-@@ -1272,11 +1272,11 @@ static int n8x0_atag_setup(void *p, int model)
-     stw_p(w++, 24);				/* u16 len */
-     strcpy((void *) w, "hw-build");		/* char component[12] */
-     w += 6;
--    strcpy((void *) w, "QEMU ");
-+    strcpy((void *) w, "ASUS ");
-     pstrcat((void *) w, 12, qemu_hw_version()); /* char version[12] */
-     w += 6;
- 
--    tag = (model == 810) ? "1.1.10-qemu" : "1.1.6-qemu";
-+    tag = (model == 810) ? "1.1.10-asus" : "1.1.6-asus";
-     stw_p(w++, OMAP_TAG_VERSION_STR);		/* u16 tag */
-     stw_p(w++, 24);				/* u16 len */
-     strcpy((void *) w, "nolo");			/* char component[12] */
 diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index bc89eb4806..600361142c 100644
+index aa09d7a091..404bdfe30e 100644
 --- a/hw/arm/sbsa-ref.c
 +++ b/hw/arm/sbsa-ref.c
-@@ -897,7 +897,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
-     MachineClass *mc = MACHINE_CLASS(oc);
+@@ -894,7 +894,7 @@ static void sbsa_ref_class_init(ObjectClass *oc, void *data)
+     };
  
      mc->init = sbsa_ref_init;
 -    mc->desc = "QEMU 'SBSA Reference' ARM Virtual Machine";
-+    mc->desc = "ASUS 'SBSA Reference' ARM Real Machine";
-     mc->default_cpu_type = ARM_CPU_TYPE_NAME("neoverse-n1");
++    mc->desc = "QEMU 'SBSA Reference' ARM Real Machine";
+     mc->default_cpu_type = ARM_CPU_TYPE_NAME("neoverse-n2");
+     mc->valid_cpu_types = valid_cpu_types;
      mc->max_cpus = 512;
-     mc->pci_allow_0_address = true;
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index 6b674231c2..2e44578631 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -97,7 +97,7 @@ static void acpi_dsdt_add_uart(Aml *scope, const MemMapEntry *uart_memmap,
- static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
- {
-     Aml *dev = aml_device("FWCF");
--    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
-+    aml_append(dev, aml_name_decl("_HID", aml_string("ASUS0002")));
-     /* device present, functioning, decoding, not shown in UI */
-     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
-     aml_append(dev, aml_name_decl("_CCA", aml_int(1)));
+     
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 7d9dbc2663..c6be230a90 100644
+index a96452f17a..3937e561f4 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -87,7 +87,7 @@
-     { \
+@@ -112,7 +112,7 @@ static void arm_virt_compat_set(MachineClass *mc)
          MachineClass *mc = MACHINE_CLASS(oc); \
-         virt_machine_##major##_##minor##_options(mc); \
--        mc->desc = "QEMU " # major "." # minor " ARM Virtual Machine"; \
-+        mc->desc = "ASUS " # major "." # minor " ARM Real Machine"; \
+         arm_virt_compat_set(mc); \
+         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
+-        mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Virtual Machine"; \
++        mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Real Machine"; \
+         MACHINE_VER_DEPRECATION(__VA_ARGS__); \
          if (latest) { \
              mc->alias = "virt"; \
-         } \
-@@ -1619,13 +1619,13 @@ static void virt_build_smbios(VirtMachineState *vms)
+@@ -1708,13 +1708,13 @@ static void virt_build_smbios(VirtMachineState *vms)
      uint8_t *smbios_tables, *smbios_anchor;
      size_t smbios_tables_len, smbios_anchor_len;
      struct smbios_phys_mem_area mem_array;
@@ -184,9 +136,10 @@ index 7d9dbc2663..c6be230a90 100644
  
 -    smbios_set_defaults("QEMU", product,
 +    smbios_set_defaults("ASUS", product,
-                         vmc->smbios_old_sys_ver ? "1.0" : mc->name, false,
-                         true, SMBIOS_ENTRY_POINT_TYPE_64);
+                         vmc->smbios_old_sys_ver ? "1.0" : mc->name);
  
+     /* build the array of physical mem area from base_memmap */ 
+    
 diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
 index c51d8ba617..1a26022358 100644
 --- a/hw/audio/hda-codec.c
@@ -201,18 +154,18 @@ index c51d8ba617..1a26022358 100644
                                0x1fc /* 16 -> 96 kHz */)
  #define QEMU_HDA_AMP_NONE    (0)
 diff --git a/hw/char/escc.c b/hw/char/escc.c
-index 4be66053c1..ab24c4347b 100644
+index a5fdd8f698..85aa9ad2e9 100644
 --- a/hw/char/escc.c
 +++ b/hw/char/escc.c
-@@ -1037,7 +1037,7 @@ static void escc_realize(DeviceState *dev, Error **errp)
+@@ -1037,7 +1037,7 @@ static void sunmouse_sync(DeviceState *dev)
+ }
  
-     if (s->chn[0].type == escc_mouse) {
-         qemu_add_mouse_event_handler(sunmouse_event, &s->chn[0], 0,
--                                     "QEMU Sun Mouse");
-+                                     "ASUS Sun Mouse");
-     }
-     if (s->chn[1].type == escc_kbd) {
-         s->chn[1].hs = qemu_input_handler_register((DeviceState *)(&s->chn[1]),
+ static const QemuInputHandler sunmouse_handler = {
+-    .name  = "QEMU Sun Mouse",
++    .name  = "ASUS Sun Mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
+     .event = sunmouse_handle_event,
+     .sync  = sunmouse_sync,
 diff --git a/hw/display/edid-generate.c b/hw/display/edid-generate.c
 index 2cb819675e..9457165040 100644
 --- a/hw/display/edid-generate.c
@@ -288,36 +241,7 @@ index 29b9964733..cd97ebef68 100644
  
  GlobalProperty pc_compat_8_1[] = {};
  const size_t pc_compat_8_1_len = G_N_ELEMENTS(pc_compat_8_1);
-diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-index ac72e8f5be..5470aa0cc4 100644
---- a/hw/i386/pc_piix.c
-+++ b/hw/i386/pc_piix.c
-@@ -237,7 +237,7 @@ static void pc_init1(MachineState *machine,
-     if (pcmc->smbios_defaults) {
-         MachineClass *mc = MACHINE_GET_CLASS(machine);
-         /* These values are guest ABI, do not change */
--        smbios_set_defaults("QEMU", mc->desc,
-+        smbios_set_defaults("ASUS", "M4A88TD-M",
-                             mc->name, pcmc->smbios_legacy_mode,
-                             pcmc->smbios_uuid_encoded,
-                             pcms->smbios_entry_point_type);
-diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-index dc27a9e223..a0dcb0bb7d 100644
---- a/hw/i386/pc_q35.c
-+++ b/hw/i386/pc_q35.c
-@@ -199,9 +199,9 @@ static void pc_q35_init(MachineState *machine)
- 
-     if (pcmc->smbios_defaults) {
-         /* These values are guest ABI, do not change */
--        smbios_set_defaults("QEMU", mc->desc,
--                            mc->name, pcmc->smbios_legacy_mode,
--                            pcmc->smbios_uuid_encoded,
-+        smbios_set_defaults("ASUS", "M4A88TD-M",
-+                            "ASUS-PC", pcmc->smbios_legacy_mode,
-+                            0x00,
-                             pcms->smbios_entry_point_type);
-     }
- 
+
 diff --git a/hw/ide/atapi.c b/hw/ide/atapi.c
 index dcc39df9a4..d85faeeb15 100644
 --- a/hw/ide/atapi.c
@@ -334,18 +258,18 @@ index dcc39df9a4..d85faeeb15 100644
          idx = 36;
      }
 diff --git a/hw/ide/core.c b/hw/ide/core.c
-index de48ff9f86..f708952b45 100644
+index b14983ec54..a7dc039a82 100644
 --- a/hw/ide/core.c
 +++ b/hw/ide/core.c
-@@ -2618,20 +2618,20 @@ int ide_init_drive(IDEState *s, BlockBackend *blk, IDEDriveKind kind,
-         pstrcpy(s->drive_serial_str, sizeof(s->drive_serial_str), serial);
+@@ -2639,20 +2639,20 @@ int ide_init_drive(IDEState *s, IDEDevice *dev, IDEDriveKind kind, Error **errp)
+         pstrcpy(s->drive_serial_str, sizeof(s->drive_serial_str), dev->serial);
      } else {
          snprintf(s->drive_serial_str, sizeof(s->drive_serial_str),
 -                 "QM%05d", s->drive_serial);
 +                 "ASUS%05d", s->drive_serial);
      }
-     if (model) {
-         pstrcpy(s->drive_model_str, sizeof(s->drive_model_str), model);
+     if (dev->model) {
+         pstrcpy(s->drive_model_str, sizeof(s->drive_model_str), dev->model);
      } else {
          switch (kind) {
          case IDE_CD:
@@ -382,39 +306,21 @@ index a9088c910c..eadc4302ce 100644
      .mask  = INPUT_EVENT_MASK_KEY,
      .event = adb_keyboard_event,
  };
+
 diff --git a/hw/input/adb-mouse.c b/hw/input/adb-mouse.c
-index e6b341f028..106c4ae121 100644
+index 77b280d242..28747a52ba 100644
 --- a/hw/input/adb-mouse.c
 +++ b/hw/input/adb-mouse.c
-@@ -1,5 +1,5 @@
- /*
-- * QEMU ADB mouse support
-+ * ASUS ADB Mouse support
-  *
-  * Copyright (c) 2004 Fabrice Bellard
-  *
-@@ -236,7 +236,7 @@ static void adb_mouse_realizefn(DeviceState *dev, Error **errp)
- 
-     amc->parent_realize(dev, errp);
- 
--    qemu_add_mouse_event_handler(adb_mouse_event, s, 0, "QEMU ADB Mouse");
-+    qemu_add_mouse_event_handler(adb_mouse_event, s, 0, "ASUS ADB Mouse");
+@@ -94,7 +94,7 @@ static void adb_mouse_handle_event(DeviceState *dev, QemuConsole *src,
  }
  
- static void adb_mouse_initfn(Object *obj)
-diff --git a/hw/input/ads7846.c b/hw/input/ads7846.c
-index dc0998ac79..a9a9bce1d9 100644
---- a/hw/input/ads7846.c
-+++ b/hw/input/ads7846.c
-@@ -154,7 +154,7 @@ static void ads7846_realize(SSIPeripheral *d, Error **errp)
- 
-     /* We want absolute coordinates */
-     qemu_add_mouse_event_handler(ads7846_ts_event, s, 1,
--                    "QEMU ADS7846-driven Touchscreen");
-+                    "ASUS ADS7846-driven Touchscreen");
- 
-     ads7846_int_update(s);
- 
+ static const QemuInputHandler adb_mouse_handler = {
+-    .name  = "QEMU ADB Mouse",
++    .name  = "ASUS ADB Mouse",
+     .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
+     .event = adb_mouse_handle_event,
+     /*
+
 diff --git a/hw/input/hid.c b/hw/input/hid.c
 index e7ecebdf8f..f4e991cc6e 100644
 --- a/hw/input/hid.c
@@ -472,41 +378,7 @@ index 45af76a837..31d24fba9e 100644
      .mask  = INPUT_EVENT_MASK_BTN | INPUT_EVENT_MASK_REL,
      .event = ps2_mouse_event,
      .sync  = ps2_mouse_sync,
-diff --git a/hw/input/tsc2005.c b/hw/input/tsc2005.c
-index 555b677173..b580cca318 100644
---- a/hw/input/tsc2005.c
-+++ b/hw/input/tsc2005.c
-@@ -510,7 +510,7 @@ void *tsc2005_init(qemu_irq pintdav)
-     tsc2005_reset(s);
- 
-     qemu_add_mouse_event_handler(tsc2005_touchscreen_event, s, 1,
--                    "QEMU TSC2005-driven Touchscreen");
-+                    "ASUS TSC2005-driven Touchscreen");
- 
-     qemu_register_reset((void *) tsc2005_reset, s);
-     vmstate_register(NULL, 0, &vmstate_tsc2005, s);
-diff --git a/hw/input/tsc210x.c b/hw/input/tsc210x.c
-index 950506fb38..b68a9e7524 100644
---- a/hw/input/tsc210x.c
-+++ b/hw/input/tsc210x.c
-@@ -1122,7 +1122,7 @@ uWireSlave *tsc2102_init(qemu_irq pint)
-     s->model = 0x2102;
-     s->name = "tsc2102";
- 
--    tsc210x_init(s, "QEMU TSC2102-driven Touchscreen", &vmstate_tsc2102);
-+    tsc210x_init(s, "ASUS TSC2102-driven Touchscreen", &vmstate_tsc2102);
- 
-     return &s->chip;
- }
-@@ -1143,7 +1143,7 @@ uWireSlave *tsc2301_init(qemu_irq penirq, qemu_irq kbirq, qemu_irq dav)
-     s->model = 0x2301;
-     s->name = "tsc2301";
- 
--    tsc210x_init(s, "QEMU TSC2301-driven Touchscreen", &vmstate_tsc2301);
-+    tsc210x_init(s, "ASUS TSC2301-driven Touchscreen", &vmstate_tsc2301);
- 
-     return &s->chip;
- }
+
 diff --git a/hw/input/virtio-input-hid.c b/hw/input/virtio-input-hid.c
 index 7053ad72d4..ca474688f7 100644
 --- a/hw/input/virtio-input-hid.c
@@ -527,19 +399,18 @@ index 7053ad72d4..ca474688f7 100644
  /* ----------------------------------------------------------------- */
  
 diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index e19b042ce8..d0ed9cabad 100644
+index b15ada2078..98fe60e3d3 100644
 --- a/hw/loongarch/virt.c
 +++ b/hw/loongarch/virt.c
-@@ -311,13 +311,13 @@ static void virt_build_smbios(LoongArchMachineState *lams)
-     MachineClass *mc = MACHINE_GET_CLASS(lams);
+@@ -130,7 +130,7 @@ static void virt_build_smbios(LoongArchVirtMachineState *lvms)
+     MachineClass *mc = MACHINE_GET_CLASS(lvms);
      uint8_t *smbios_tables, *smbios_anchor;
      size_t smbios_tables_len, smbios_anchor_len;
 -    const char *product = "QEMU Virtual Machine";
 +    const char *product = "ASUS Real Machine";
  
-     if (!lams->fw_cfg) {
+     if (!lvms->fw_cfg) {
          return;
-     }
  
 -    smbios_set_defaults("QEMU", product, mc->name, false,
 +    smbios_set_defaults("ASUS", product, mc->name, false,
@@ -547,10 +418,10 @@ index e19b042ce8..d0ed9cabad 100644
  
      smbios_get_tables(ms, NULL, 0, &smbios_tables, &smbios_tables_len,
 diff --git a/hw/m68k/virt.c b/hw/m68k/virt.c
-index de91726cf9..bbbb8042e4 100644
+index d967bdd743..515202a868 100644
 --- a/hw/m68k/virt.c
 +++ b/hw/m68k/virt.c
-@@ -302,7 +302,7 @@ static void virt_init(MachineState *machine)
+@@ -312,7 +312,7 @@ static void virt_init(MachineState *machine)
  static void virt_machine_class_init(ObjectClass *oc, void *data)
  {
      MachineClass *mc = MACHINE_CLASS(oc);
@@ -559,15 +430,15 @@ index de91726cf9..bbbb8042e4 100644
      mc->init = virt_init;
      mc->default_cpu_type = M68K_CPU_TYPE_NAME("m68040");
      mc->max_cpus = 1;
-@@ -331,7 +331,7 @@ type_init(virt_machine_register_types)
+@@ -342,7 +342,7 @@ type_init(virt_machine_register_types)
      { \
          MachineClass *mc = MACHINE_CLASS(oc); \
-         virt_machine_##major##_##minor##_options(mc); \
--        mc->desc = "QEMU " # major "." # minor " M68K Virtual Machine"; \
-+        mc->desc = "ASUS " # major "." # minor " M68K Real Machine"; \
+         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
+-        mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " M68K Virtual Machine"; \
++        mc->desc = "ASUS " MACHINE_VER_STR(__VA_ARGS__) " M68K Real Machine"; \
+         MACHINE_VER_DEPRECATION(__VA_ARGS__); \
          if (latest) { \
              mc->alias = "virt"; \
-         } \
 diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
 index 539d273553..a372ce462c 100644
 --- a/hw/nvme/ctrl.c
@@ -620,19 +491,7 @@ index 7aa2f2107a..7688c7d749 100644
      const char compatible[] = "fsl,qemu-e500";
  
      qemu_fdt_setprop(fdt, "/", "model", model, sizeof(model));
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index 7331248f59..05c5d0af67 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -100,7 +100,7 @@ static void acpi_dsdt_add_cpus(Aml *scope, RISCVVirtState *s)
- static void acpi_dsdt_add_fw_cfg(Aml *scope, const MemMapEntry *fw_cfg_memmap)
- {
-     Aml *dev = aml_device("FWCF");
--    aml_append(dev, aml_name_decl("_HID", aml_string("QEMU0002")));
-+    aml_append(dev, aml_name_decl("_HID", aml_string("ASUS0002")));
- 
-     /* device present, functioning, decoding, not shown in UI */
-     aml_append(dev, aml_name_decl("_STA", aml_int(0xB)));
+
 diff --git a/hw/scsi/mptconfig.c b/hw/scsi/mptconfig.c
 index 19d01f39fa..e59c1b62ce 100644
 --- a/hw/scsi/mptconfig.c
@@ -717,16 +576,16 @@ index 5bbbef64ef..031829d984 100644
      req->writing = 0;
      vscsi_preprocess_desc(req);
 diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index 10cd22f610..17a05cc12b 100644
+index ad4cd6721e..45b5e64c7a 100644
 --- a/hw/smbios/smbios.c
 +++ b/hw/smbios/smbios.c
-@@ -615,7 +615,7 @@ static void smbios_build_type_0_table(void)
+@@ -573,7 +573,7 @@ static void smbios_build_type_0_table(void)
  
      t->bios_characteristics = cpu_to_le64(0x08); /* Not supported */
      t->bios_characteristics_extension_bytes[0] = 0;
 -    t->bios_characteristics_extension_bytes[1] = 0x14; /* TCD/SVVP | VM */
 +    t->bios_characteristics_extension_bytes[1] = 0x08; /* TCD/SVVP | VM */
-     if (type0.uefi) {
+     if (smbios_type0.uefi) {
          t->bios_characteristics_extension_bytes[1] |= 0x08; /* |= UEFI */
      }
 diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
@@ -1246,26 +1105,25 @@ index c5612e16a2..048cb93d3d 100644
  enum virtio_scsi_vq_id {
      VR_CONTROL  = 0,
 diff --git a/qapi/ui.json b/qapi/ui.json
-index 006616aa77..743eb36a80 100644
+index 1b2f4a4769..083c851f9f 100644
 --- a/qapi/ui.json
 +++ b/qapi/ui.json
-@@ -836,13 +836,13 @@
- # -> { "execute": "query-mice" }
- # <- { "return": [
- #          {
--#             "name":"QEMU Microsoft Mouse",
-+#             "name":"ASUS Microsoft Mouse",
- #             "index":0,
- #             "current":false,
- #             "absolute":false
- #          },
- #          {
--#             "name":"QEMU PS/2 Mouse",
-+#             "name":"ASUS PS/2 Mouse",
- #             "index":1,
- #             "current":true,
- #             "absolute":true
-diff --git a/qga/vss-win32/vss-handles.h b/qga/vss-win32/vss-handles.h
+@@ -831,13 +831,13 @@
+ #     -> { "execute": "query-mice" }
+ #     <- { "return": [
+ #              {
+-#                 "name":"QEMU Microsoft Mouse",
++#                 "name":"Asus Microsoft Mouse",
+ #                 "index":0,
+ #                 "current":false,
+ #                 "absolute":false
+ #              },
+ #              {
+-#                 "name":"QEMU PS/2 Mouse",
++#                 "name":"Asus PS/2 Mouse",
+ #                 "index":1,
+ #                 "current":true,
+ #                 "absolute":truediff --git a/qga/vss-win32/vss-handles.h b/qga/vss-win32/vss-handles.h
 index 1a7d842129..bb10ad4576 100644
 --- a/qga/vss-win32/vss-handles.h
 +++ b/qga/vss-win32/vss-handles.h
@@ -1363,7 +1221,7 @@ index 52a59386d7..466542c1b9 100644
  
      seamless_migration = qemu_opt_get_bool(opts, "seamless-migration", 0);
 diff --git a/ui/spice-input.c b/ui/spice-input.c
-index bbd502564e..131c93890e 100644
+index a5c5d78474..6577103601 100644
 --- a/ui/spice-input.c
 +++ b/ui/spice-input.c
 @@ -39,7 +39,7 @@ static uint8_t kbd_get_leds(SpiceKbdInstance *sin);
