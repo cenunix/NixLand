@@ -71,12 +71,17 @@ in
             local journal_tab, journal_pane, window = window:spawn_tab {
               cwd = journal_dir,
             }
+            local music_tab, music_pane, window = window:spawn_tab {
+              cwd = default_dir,
+            }
 
             journal_tab:set_title 'Journal'
             config_tab:set_title 'NixLand'
+            music_tab:set_title 'Music'
 
             config_pane:send_text 'nvim .\n'
             journal_pane:send_text 'nvim .\n'
+            music_pane:send_text 'spotify_player \n'
             default_tab:activate()
 
 

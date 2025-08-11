@@ -1,0 +1,224 @@
+From cbd7decc6c00a78d50fe1d910b0cfe6a7f9d1b9e Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Sun, 3 Aug 2025 18:23:04 +0200
+Subject: [PATCH 1/3] fix: add fallback logic for CDN urls
+
+---
+ audio/src/fetch/mod.rs | 50 ++++++++++++++++++++++++++++--------------
+ core/src/cdn_url.rs    | 29 ++++++++++++++++++++++++
+ core/src/spclient.rs   |  6 ++---
+ 3 files changed, 64 insertions(+), 21 deletions(-)
+
+diff --git a/audio/src/fetch/mod.rs b/audio/src/fetch/mod.rs
+index d16171063..c70a39ab7 100644
+--- a/audio/src/fetch/mod.rs
++++ b/audio/src/fetch/mod.rs
+@@ -306,7 +306,7 @@ struct AudioFileDownloadStatus {
+ }
+ 
+ struct AudioFileShared {
+-    cdn_url: CdnUrl,
++    cdn_url: String,
+     file_size: usize,
+     bytes_per_second: usize,
+     cond: Condvar,
+@@ -426,25 +426,41 @@ impl AudioFileStreaming {
+     ) -> Result<AudioFileStreaming, Error> {
+         let cdn_url = CdnUrl::new(file_id).resolve_audio(&session).await?;
+ 
+-        if let Ok(url) = cdn_url.try_get_url() {
+-            trace!("Streaming from {}", url);
+-        }
+-
+         let minimum_download_size = AudioFetchParams::get().minimum_download_size;
+ 
+-        // When the audio file is really small, this `download_size` may turn out to be
+-        // larger than the audio file we're going to stream later on. This is OK; requesting
+-        // `Content-Range` > `Content-Length` will return the complete file with status code
+-        // 206 Partial Content.
+-        let mut streamer =
+-            session
++        let mut response_streamer_url = None;
++
++        for url in cdn_url.try_get_urls()? {
++            // When the audio file is really small, this `download_size` may turn out to be
++            // larger than the audio file we're going to stream later on. This is OK; requesting
++            // `Content-Range` > `Content-Length` will return the complete file with status code
++            // 206 Partial Content.
++            let mut streamer = session
+                 .spclient()
+-                .stream_from_cdn(&cdn_url, 0, minimum_download_size)?;
++                .stream_from_cdn(url, 0, minimum_download_size)?;
++
++            // Get the first chunk with the headers to get the file size.
++            // The remainder of that chunk with possibly also a response body is then
++            // further processed in `audio_file_fetch`.
++            let resp: Result<Response<Incoming>, Error> = streamer
++                .next()
++                .await
++                .map_or(Err(AudioFileError::NoData.into()), |x| Ok(x?));
++
++            match resp {
++                Ok(r) => {
++                    response_streamer_url = Some((r, streamer, url));
++                    break;
++                }
++                Err(e) => warn!("Fetching {url} failed with error {e:?}, trying next"),
++            }
++        }
++
++        let Some((response, streamer, url)) = response_streamer_url else {
++            return Err(Error::unavailable("all URLs failed, none left to try"));
++        };
+ 
+-        // Get the first chunk with the headers to get the file size.
+-        // The remainder of that chunk with possibly also a response body is then
+-        // further processed in `audio_file_fetch`.
+-        let response = streamer.next().await.ok_or(AudioFileError::NoData)??;
++        trace!("Streaming from {}", url);
+ 
+         let code = response.status();
+         if code != StatusCode::PARTIAL_CONTENT {
+@@ -473,7 +489,7 @@ impl AudioFileStreaming {
+         };
+ 
+         let shared = Arc::new(AudioFileShared {
+-            cdn_url,
++            cdn_url: url.to_string(),
+             file_size,
+             bytes_per_second,
+             cond: Condvar::new(),
+diff --git a/core/src/cdn_url.rs b/core/src/cdn_url.rs
+index b6b7ecfc1..44f4488f2 100644
+--- a/core/src/cdn_url.rs
++++ b/core/src/cdn_url.rs
+@@ -78,6 +78,7 @@ impl CdnUrl {
+         Ok(cdn_url)
+     }
+ 
++    #[deprecated = "This function only returns the first valid URL. Use try_get_urls instead, which allows for fallback logic."]
+     pub fn try_get_url(&self) -> Result<&str, Error> {
+         if self.urls.is_empty() {
+             return Err(CdnUrlError::Unresolved.into());
+@@ -95,6 +96,34 @@ impl CdnUrl {
+             Err(CdnUrlError::Expired.into())
+         }
+     }
++
++    pub fn try_get_urls(&self) -> Result<Vec<&str>, Error> {
++        if self.urls.is_empty() {
++            return Err(CdnUrlError::Unresolved.into());
++        }
++
++        let now = Date::now_utc();
++        let urls: Vec<&str> = self
++            .urls
++            .iter()
++            .filter_map(|MaybeExpiringUrl(url, expiry)| match *expiry {
++                Some(expiry) => {
++                    if now < expiry {
++                        Some(url.as_str())
++                    } else {
++                        None
++                    }
++                }
++                None => Some(url.as_str()),
++            })
++            .collect();
++
++        if urls.is_empty() {
++            Err(CdnUrlError::Expired.into())
++        } else {
++            Ok(urls)
++        }
++    }
+ }
+ 
+ impl TryFrom<CdnUrlMessage> for MaybeExpiringUrls {
+diff --git a/core/src/spclient.rs b/core/src/spclient.rs
+index 4377d4066..d503ec6a6 100644
+--- a/core/src/spclient.rs
++++ b/core/src/spclient.rs
+@@ -6,7 +6,6 @@ use std::{
+ use crate::config::{os_version, OS};
+ use crate::{
+     apresolve::SocketAddress,
+-    cdn_url::CdnUrl,
+     config::SessionConfig,
+     error::ErrorKind,
+     protocol::{
+@@ -732,14 +731,13 @@ impl SpClient {
+ 
+     pub fn stream_from_cdn(
+         &self,
+-        cdn_url: &CdnUrl,
++        cdn_url: &str,
+         offset: usize,
+         length: usize,
+     ) -> Result<IntoStream<ResponseFuture>, Error> {
+-        let url = cdn_url.try_get_url()?;
+         let req = Request::builder()
+             .method(&Method::GET)
+-            .uri(url)
++            .uri(cdn_url)
+             .header(
+                 RANGE,
+                 HeaderValue::from_str(&format!("bytes={}-{}", offset, offset + length - 1))?,
+
+From 1750087af25c027b092391b68d175242beb55522 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Mon, 4 Aug 2025 15:34:09 +0200
+Subject: [PATCH 2/3] mention urls tried count in error, make error type
+ mangling more clear
+
+---
+ audio/src/fetch/mod.rs | 17 ++++++++++-------
+ 1 file changed, 10 insertions(+), 7 deletions(-)
+
+diff --git a/audio/src/fetch/mod.rs b/audio/src/fetch/mod.rs
+index c70a39ab7..577e87a69 100644
+--- a/audio/src/fetch/mod.rs
++++ b/audio/src/fetch/mod.rs
+@@ -429,8 +429,8 @@ impl AudioFileStreaming {
+         let minimum_download_size = AudioFetchParams::get().minimum_download_size;
+ 
+         let mut response_streamer_url = None;
+-
+-        for url in cdn_url.try_get_urls()? {
++        let urls = cdn_url.try_get_urls()?;
++        for url in &urls {
+             // When the audio file is really small, this `download_size` may turn out to be
+             // larger than the audio file we're going to stream later on. This is OK; requesting
+             // `Content-Range` > `Content-Length` will return the complete file with status code
+@@ -442,10 +442,10 @@ impl AudioFileStreaming {
+             // Get the first chunk with the headers to get the file size.
+             // The remainder of that chunk with possibly also a response body is then
+             // further processed in `audio_file_fetch`.
+-            let resp: Result<Response<Incoming>, Error> = streamer
+-                .next()
+-                .await
+-                .map_or(Err(AudioFileError::NoData.into()), |x| Ok(x?));
++            let resp = streamer.next().await.map_or_else(
++                || Err(AudioFileError::NoData.into()),
++                |x| x.map_err(Error::from),
++            );
+ 
+             match resp {
+                 Ok(r) => {
+@@ -457,7 +457,10 @@ impl AudioFileStreaming {
+         }
+ 
+         let Some((response, streamer, url)) = response_streamer_url else {
+-            return Err(Error::unavailable("all URLs failed, none left to try"));
++            return Err(Error::unavailable(format!(
++                "{} URLs failed, none left to try",
++                urls.len()
++            )));
+         };
+ 
+         trace!("Streaming from {}", url);
+
+From 4ea68feb6767d6ec2988203291142e354af580a5 Mon Sep 17 00:00:00 2001
+From: lemonsh <lemon@lemonsh.moe>
+Date: Mon, 4 Aug 2025 20:44:35 +0200
+Subject: [PATCH 3/3] update changelog

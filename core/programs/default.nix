@@ -16,11 +16,11 @@
     ./hyprpanel
     ./lf
     ./nvf
+    ./spotify
     ./firefox.nix
     ./git.nix
     ./kitty.nix
     ./signal.nix
-    ./spotify.nix
     ./thunar.nix
     ./vscode.nix
   ];

@@ -1,0 +1,22 @@
+$ git log --format=%h -1
+383a6f6
+
+$ git diff
+diff --git a/core/src/spclient.rs b/core/src/spclient.rs
+index a23b52f..f12c735 100644
+--- a/core/src/spclient.rs
++++ b/core/src/spclient.rs
+@@ -396,7 +396,12 @@ impl SpClient {
+
+             // Reconnection logic: retrieve the endpoint every iteration, so we can try
+             // another access point when we are experiencing network issues (see below).
+-            let mut url = self.base_url().await?;
++            let mut url = if endpoint.starts_with("/metadata") {
++                String::from("https://spclient.wg.spotify.com")
++            } else {
++                self.base_url().await?
++            };
++
+             url.push_str(endpoint);
+
+             let separator = match url.find('?') {

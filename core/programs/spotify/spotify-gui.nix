@@ -11,7 +11,7 @@ with lib;
 let
   device = config.modules.device;
   spicePkgs = inputs.spicetify-nix.legacyPackages.${pkgs.stdenv.system};
-  acceptedTypes = ["desktop"];
+  acceptedTypes = [ "desktop" ];
 in
 {
   hm = mkIf (builtins.elem device.type acceptedTypes) {
