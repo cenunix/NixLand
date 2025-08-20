@@ -1,12 +1,3 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
-}:
 final: prev:
 let
   patchedLibrespotSrc = prev.fetchFromGitHub {
@@ -21,8 +12,8 @@ let
     src = patchedLibrespotSrc;
 
     patches = [
-      ./1524.patch # https://github.com/librespot-org/librespot/pull/1524
-      ./1527.patch # https://github.com/librespot-org/librespot/pull/1524
+      ./patches/1524.patch # https://github.com/librespot-org/librespot/pull/1524
+      ./patches/1527.patch # https://github.com/librespot-org/librespot/pull/1524
     ];
 
     buildPhase = "";

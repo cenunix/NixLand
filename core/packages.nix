@@ -26,7 +26,6 @@ in
         [
           #actual apps
           ttyper
-          spotify-player
           wofi
           wpa_supplicant_gui
           obsidian

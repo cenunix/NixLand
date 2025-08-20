@@ -47,7 +47,7 @@ in
     general = {
       gaps_in = 4;
       gaps_out = 4;
-      border_size = 2;
+      border_size = 1;
       # "col.active_border" = "rgb(a0acc5)";
       # "col.inactive_border" = "rgb(7486a9)";
       allow_tearing = true;
@@ -62,7 +62,7 @@ in
         # color = "rgb(3c4252)";
         # color_inactive = "rgb(3c4252)";
       };
-      rounding = 4;
+      rounding = 8;
       blur = {
         enabled = false;
         ignore_opacity = false;
@@ -71,7 +71,7 @@ in
       };
     };
     animations = {
-      enabled = false;
+      enabled = true;
       bezier = [
         "pace, 0.46, 1, 0.29, 0.99"
         "overshot, 0.13, 0.99, 0.29, 1.1"

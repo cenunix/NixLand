@@ -36,7 +36,7 @@ in
 
         menus = {
           dashboard = {
-            shortcuts.enabled = false;
+            shortcuts.enabled = true;
             directories.enabled = false;
             stats.enable_gpu = true;
             powermenu = {
@@ -91,24 +91,23 @@ in
                   "dashboard"
                   "workspaces"
                 ];
-                middle = [ "media" ];
-                right =
-                  [
-                    "volume"
-                    "network"
-                    "ram"
-                    "weather"
-                    "hyprsunset"
-                    "bluetooth"
-                    "systray"
-                    "clock"
-                  ]
-                  ++ optionals (device.type == "armlaptop") [
-                    "battery"
-                  ]
-                  ++ [
-                    "notifications"
-                  ];
+                middle = [ ];
+                right = [
+                  "volume"
+                  "network"
+                  "ram"
+                  "weather"
+                  "hyprsunset"
+                  "bluetooth"
+                  "systray"
+                  "clock"
+                ]
+                ++ optionals (device.type == "armlaptop") [
+                  "battery"
+                ]
+                ++ [
+                  "notifications"
+                ];
               };
               "1" = {
                 left = [
@@ -116,23 +115,22 @@ in
                   "workspaces"
                 ];
                 middle = [ "media" ];
-                right =
-                  [
-                    "volume"
-                    "network"
-                    "ram"
-                    "weather"
-                    "hyprsunset"
-                    "bluetooth"
-                    "systray"
-                    "clock"
-                  ]
-                  ++ optionals (device.type == "armlaptop") [
-                    "battery"
-                  ]
-                  ++ [
-                    "notifications"
-                  ];
+                right = [
+                  "volume"
+                  "network"
+                  "ram"
+                  "weather"
+                  "hyprsunset"
+                  "bluetooth"
+                  "systray"
+                  "clock"
+                ]
+                ++ optionals (device.type == "armlaptop") [
+                  "battery"
+                ]
+                ++ [
+                  "notifications"
+                ];
               };
               "2" = {
                 left = [

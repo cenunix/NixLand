@@ -34,6 +34,7 @@ in
               "https://proton.me"
               "https://openai.com"
               "https://youtube.com"
+              "https://chatgpt.com"
             ];
 
           };
