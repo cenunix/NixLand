@@ -1008,19 +1008,7 @@ diff --git a/include/hw/pci/pci.h b/include/hw/pci/pci.h
 index abdc1ef103..dafcefb503 100644
 --- a/include/hw/pci/pci.h
 +++ b/include/hw/pci/pci.h
-@@ -72,9 +72,9 @@ extern bool pci_available;
- #define PCI_DEVICE_ID_INTEL_82801IR      0x2922
- 
- /* Red Hat / Qumranet (for QEMU) -- see pci-ids.txt */
--#define PCI_VENDOR_ID_REDHAT_QUMRANET    0x1af4
--#define PCI_SUBVENDOR_ID_REDHAT_QUMRANET 0x1af4
--#define PCI_SUBDEVICE_ID_QEMU            0x1100
-+#define PCI_VENDOR_ID_REDHAT_QUMRANET    0x8086
-+#define PCI_SUBVENDOR_ID_REDHAT_QUMRANET 0x8086
-+#define PCI_SUBDEVICE_ID_QEMU            0x8086
- 
- /* legacy virtio-pci devices */
- #define PCI_DEVICE_ID_VIRTIO_NET         0x1000
+
 @@ -95,7 +95,7 @@ extern bool pci_available;
   */
  #define PCI_DEVICE_ID_VIRTIO_10_BASE     0x1040
