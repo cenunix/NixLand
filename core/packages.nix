@@ -35,7 +35,7 @@ in
           hyprpicker
           gnome-podcasts
           grimblast
-          # libreoffice-fresh
+          libreoffice-qt6-fresh
           libnotify
           jellyfin-media-player
           thunderbird
@@ -54,6 +54,7 @@ in
           # command line tools I use frequently
           neofetch
           nnn # terminal file manager
+          gnumake
 
           # archives
           zip
