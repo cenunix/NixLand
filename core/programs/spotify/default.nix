@@ -8,7 +8,7 @@
   ...
 }:
 {
-  nixpkgs.overlays = [ (import ./spotify-player.nix) ];
+  # nixpkgs.overlays = [ (import ./spotify-player.nix) ];
   imports = [
     ./spotify-gui.nix
   ];
