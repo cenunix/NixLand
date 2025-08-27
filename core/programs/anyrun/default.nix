@@ -4,13 +4,18 @@
   ...
 }:
 {
-  hm.imports = [
-    # inputs.anyrun.homeManagerModules.default
-  ];
+  # hm.imports = [
+  #   # inputs.anyrun.homeManagerModules.default
+  # ];
+  hm.services = {
+    walker = {
+      enable = true;
+    };
+  };
 
   hm.programs = {
     anyrun = {
-      enable = true;
+      enable = false;
       extraConfigFiles = {
         "applications.ron".text = ''
           Config(
@@ -94,12 +99,12 @@
         y.fraction = 0.3;
         hidePluginInfo = true;
         closeOnClick = true;
-        plugins = with inputs.anyrun.packages.${pkgs.system}; [
-          applications
-          # randr
-          # rink
-          # shell
-          # symbols
+        plugins = [
+          "${pkgs.anyrun}/lib/libapplications.so"
+          # "${pkgs.anyrun}/lib/libsymbols.so"
+          # "${pkgs.anyrun}/lib/libkidex.so"
+          # "${pkgs.anyrun}/lib/librink.so"
+          # "${pkgs.anyrun}/lib/libtranslate.so"
         ];
       };
     };
