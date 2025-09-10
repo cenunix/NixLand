@@ -125,6 +125,8 @@ in
               --button-primary-color: #cdd6f4 !important;
               --button-hover-bgcolor: #11111b !important;
               --focus-outline-color: #07070b !important;
+              --tabs-navbar-separator-color: #07070b !important; 
+              --chrome-content-separator-color: #07070b !important;
               --button-active-bgcolor: #07070b !important;
               --panel-separator-zap-gradient: linear-gradient(90deg, #181825 0%, #45475a 52.08%, #6c7086 100%);
               --arrowpanel-border-color: #cdd6f4 !important;
@@ -144,10 +146,14 @@ in
               --button-primary-active-bgcolor: #cdd6f4 !important;
               --urlbarView-highlight-color: #cdd6f4 !important;
               --urlbarView-highlight-background: #585b70 !important;
+              --inactive-titlebar-opacity: 1.0 !important;
             }
             tab-close-button.close-icon {
               display: none;
               color: red;
+            }
+            tab-label-container {
+              color: #07070b;
             }
             #_c607c8df-14a7-4f28-894f-29e8722976af_-BAP {
                color: #07070b;

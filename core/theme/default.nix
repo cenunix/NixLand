@@ -16,6 +16,7 @@ in
   hm.stylix = {
     targets.nvf.enable = false;
     targets.firefox.enable = false;
+    targets.librewolf.enable = false;
   };
   stylix = {
     enable = true;

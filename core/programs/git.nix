@@ -50,7 +50,7 @@
       ];
       extraConfig = {
         init.defaultBranch = "main";
-
+        credential.helper = "oauth";
         delta = {
           enable = true;
           line-numbers = true;

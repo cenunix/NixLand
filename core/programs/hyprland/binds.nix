@@ -63,7 +63,7 @@ in
         "$mod, P, exec, grimblast --notify copysave output"
         "$mod SHIFT, P, exec, grimblast --notify copysave area"
         "$mod SHIFT, P, exec, ags -b hypr -r 'recorder.screenshot(true)'"
-        "$mod, SPACE, exec, anyrun"
+        "$mod, SPACE, exec, walker"
       ]
       ++ workspaces;
 
