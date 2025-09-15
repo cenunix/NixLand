@@ -13,6 +13,12 @@
     clean.extraArgs = "--keep-since 4d --keep 3";
     flake = "/home/cenunix/NixLand";
   };
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "qtwebengine-5.15.19"
+    ];
+  };
   nix = {
     settings = {
       extra-experimental-features = [

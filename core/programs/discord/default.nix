@@ -35,7 +35,7 @@ in
           fixSpotifyEmbeds.enable = true;
           fixYoutubeEmbeds.enable = true;
           gameActivityToggle.enable = true;
-          hideAttachments.enable = true;
+          hideMedia.enable = true;
           memberCount.enable = true;
           messageLogger.enable = true;
           messageClickActions.enable = true;
