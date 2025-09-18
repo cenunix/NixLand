@@ -47,7 +47,7 @@
         gui.enable = true;
         gpu-screen-recorder.enable = true;
         gaming = {
-          enable = true;
+          enable = false;
           steam.enable = false;
           chess.enable = false;
           minecraft.enable = false;
@@ -68,7 +68,7 @@
       };
       usrEnv = {
         isWayland = true;
-        desktop = "Hyprland";
+        desktop = "Niri";
         windowManager = true;
         useHomeManager = true;
         autologin = false;

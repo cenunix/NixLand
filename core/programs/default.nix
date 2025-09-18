@@ -11,11 +11,12 @@
     ./anyrun
     ./btop
     ./discord
-    ./hyprland
-    ./hyprlock
-    ./hyprpanel
+    # ./hyprland
+    # ./hyprlock
+    # ./hyprpanel
     ./lf
     ./nvf
+    ./niri
     ./spotify
     ./firefox.nix
     ./git.nix

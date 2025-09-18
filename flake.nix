@@ -10,7 +10,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # Different Window Managers, who will win??
     hyprland.url = "github:hyprwm/hyprland?ref=v0.50.1";
+
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     nvf = {
       url = "github:notashelf/nvf";
