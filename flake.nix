@@ -13,8 +13,13 @@
     # Different Window Managers, who will win??
     hyprland.url = "github:hyprwm/hyprland?ref=v0.50.1";
 
-    niri = {
+    niri-flake = {
       url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dankmaterialshell = {
+      url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

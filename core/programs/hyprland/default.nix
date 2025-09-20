@@ -9,7 +9,9 @@
 }:
 with lib;
 {
-  hm.imports = [ inputs.hyprland.homeManagerModules.default ];
+  hm.imports = [
+    inputs.hyprland.homeManagerModules.default
+  ];
   imports = [
     ./binds.nix
     ./settings.nix

@@ -29,7 +29,7 @@ in
     #   ];
     # };
     xdg.portal = {
-      enable = true;
+      enable = lib.mkForce true;
 
       extraPortals = [
         pkgs.xdg-desktop-portal-gtk

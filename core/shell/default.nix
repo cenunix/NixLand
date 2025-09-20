@@ -26,7 +26,7 @@ in
           local act = wezterm.action
 
           config.use_fancy_tab_bar = false
-
+          config.front_end = "OpenGL"
           config.keys = {
             {
               key = 'i',

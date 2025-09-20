@@ -86,8 +86,6 @@ in
           swtpm.enable = true;
         };
       };
-
-      lxd.enable = false;
     };
   };
 }

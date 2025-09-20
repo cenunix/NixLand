@@ -18,7 +18,7 @@ in
     # enable polkit for privilege escalation
     programs = {
       gnome-disks.enable = true;
-      nm-applet.enable = true;
+      # nm-applet.enable = true;
       dconf.enable = true;
       wireshark.enable = true;
       seahorse.enable = true;
@@ -29,7 +29,7 @@ in
       fstrim.enable = true;
       avahi.enable = true;
       gvfs.enable = true; # Mount, trash, and other functionalities
-      flatpak.enable = true;
+      # flatpak.enable = true;
       upower.enable = device.type == "armlaptop";
       dbus = {
         packages = with pkgs; [
@@ -57,6 +57,9 @@ in
           maple-mono.NF-CN
           lexend
           # joypixels
+          fira-code
+          inter
+          material-symbols
         ]
         ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
