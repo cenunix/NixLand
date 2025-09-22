@@ -86,18 +86,18 @@ in
           "security.workspace.trust.enabled" = false;
           "explorer.confirmDelete" = false;
           "breadcrumbs.enabled" = true;
-          "workbench.colorCustomizations" = {
-            "editor.background" = "#07070b";
-            "editorGutter.background" = "#07070b";
-            "editorRuler.background" = "#07070b";
-            "activityBar.background" = "#07070b";
-            "sideBar.background" = "#07070b";
-            "sideBarSectionHeader.background" = "#07070b";
-            "editorGroupHeader.tabsBackground" = "#07070b";
-            "tab.activeBackground" = "#07070b";
-            "tab.inactiveBackground" = "#07070b";
-            "tab.unfocusedActiveBackground" = "#07070b";
-          };
+          # "workbench.colorCustomizations" = {
+          #   "editor.background" = "#07070b";
+          #   "editorGutter.background" = "#07070b";
+          #   "editorRuler.background" = "#07070b";
+          #   "activityBar.background" = "#07070b";
+          #   "sideBar.background" = "#07070b";
+          #   "sideBarSectionHeader.background" = "#07070b";
+          #   "editorGroupHeader.tabsBackground" = "#07070b";
+          #   "tab.activeBackground" = "#07070b";
+          #   "tab.inactiveBackground" = "#07070b";
+          #   "tab.unfocusedActiveBackground" = "#07070b";
+          # };
         };
       };
     };

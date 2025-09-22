@@ -25,8 +25,8 @@ in
     environment = {
       variables = {
         # NIXOS_OZONE_WL = "1";
-        __GL_GSYNC_ALLOWED = "0";
-        __GL_VRR_ALLOWED = "0";
+        __GL_GSYNC_ALLOWED = "1";
+        __GL_VRR_ALLOWED = "1";
         SSH_AUTH_SOCK = "/run/user/1000/keyring/ssh";
         # DISABLE_QT5_COMPAT = "0";
         # ANKI_WAYLAND = "1";

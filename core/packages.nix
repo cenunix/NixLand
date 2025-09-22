@@ -37,7 +37,7 @@ in
           grimblast
           libreoffice-qt6-fresh
           libnotify
-          jellyfin-web
+          # jellyfin-media-player Needs to be updated by maintainers
           thunderbird
           telegram-desktop
           bitwarden-desktop

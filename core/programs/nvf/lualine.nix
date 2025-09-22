@@ -11,7 +11,7 @@
   hm.programs.nvf.settings.vim = {
     statusline.lualine = {
       enable = true;
-      theme = "catppuccin";
+      theme = "base16";
       componentSeparator = {
         right = "";
         left = "";

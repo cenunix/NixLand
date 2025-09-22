@@ -1,7 +1,10 @@
 {
+  inputs,
+  outputs,
+  lib,
   config,
   pkgs,
-  inputs,
+  osConfig,
   ...
 }:
 {

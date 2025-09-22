@@ -39,7 +39,7 @@ in
       ++ optionals (builtins.elem device.type [ "armlaptop" ]) [ alsa-ucm-conf ];
     hm.services.blueman-applet.enable = false;
     services = {
-      blueman.enable = true;
+      # blueman.enable = true;
       pulseaudio.enable = false;
       pipewire = {
         enable = true;

@@ -1,9 +1,8 @@
-{
-  inputs,
-  pkgs,
-  config,
-  osConfig,
-  ...
+{ inputs
+, pkgs
+, config
+, osConfig
+, ...
 }:
 let
   inherit (config.modules.style) pointerCursor;

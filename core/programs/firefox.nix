@@ -1,10 +1,9 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  osConfig,
-  ...
+{ config
+, inputs
+, lib
+, pkgs
+, osConfig
+, ...
 }:
 with lib;
 let
@@ -17,6 +16,7 @@ let
   startpage = pkgs.substituteAll { src = ./startpage.html; };
   user = config.modules.system.username;
   addons = inputs.firefox-addons.packages.${pkgs.system};
+  colors = config.lib.stylix.colors.withHashtag;
 in
 {
   config = mkIf (builtins.elem device.type acceptedTypes) {
@@ -45,7 +45,7 @@ in
           search = {
             engines = {
               "kagi" = {
-                urls = [ { template = "https://kagi.com/search?q={searchTerms}"; } ];
+                urls = [{ template = "https://kagi.com/search?q={searchTerms}"; }];
                 icon = "https://kagi.com/favicon.ico";
               };
               "bing".metaData.hidden = true;
@@ -114,38 +114,38 @@ in
           };
           userChrome = ''
             * {
-              --button-bgcolor: #11111b !important;
-              --lwt-accent-color: #07070b !important;
-              --arrowpanel-background: #07070b !important;
-              --input-bgcolor: #07070b !important;
-              --toolbar-field-background-color: #07070b !important;
-              --urlbarView-separator-color: #07070b !important;
-              --toolbar-field-focus-background-color: #07070b !important;
-              --toolbar-bgcolor: #07070b !important;
-              --button-primary-color: #cdd6f4 !important;
-              --button-hover-bgcolor: #11111b !important;
-              --focus-outline-color: #07070b !important;
-              --tabs-navbar-separator-color: #07070b !important; 
-              --chrome-content-separator-color: #07070b !important;
-              --button-active-bgcolor: #07070b !important;
+              --button-bgcolor: ${colors.base01} !important;
+              --lwt-accent-color: ${colors.base00} !important;
+              --arrowpanel-background: ${colors.base00} !important;
+              --input-bgcolor: ${colors.base00} !important;
+              --toolbar-field-background-color: ${colors.base00} !important;
+              --urlbarView-separator-color: ${colors.base00} !important;
+              --toolbar-field-focus-background-color: ${colors.base00} !important;
+              --toolbar-bgcolor: ${colors.base00} !important;
+              --button-primary-color: ${colors.base05} !important;
+              --button-hover-bgcolor: ${colors.base01} !important;
+              --focus-outline-color: ${colors.base00} !important;
+              --tabs-navbar-separator-color: ${colors.base00} !important;
+              --chrome-content-separator-color: ${colors.base00} !important;
+              --button-active-bgcolor: ${colors.base00} !important;
               --panel-separator-zap-gradient: linear-gradient(90deg, #181825 0%, #45475a 52.08%, #6c7086 100%);
-              --arrowpanel-border-color: #cdd6f4 !important;
-              --arrowpanel-color: #cdd6f4 !important;
-              --input-color: #cdd6f4 !important;
-              --toolbar-field-color: #cdd6f4 !important;
-              --lwt-text-color: #cdd6f4 !important;
-              --toolbar-color: #cdd6f4 !important;
-              --toolbar-field-focus-color: #cdd6f4 !important;
-              --newtab-text-primary-color: #cdd6f4 !important;
-              --tab-selected-textcolor: #cdd6f4 !important;
-              --tab-icon-overlay-fill: #cdd6f4 !important;
-              --toolbarbutton-icon-fill: #cdd6f4 !important;
-              --sidebar-text-color: #cdd6f4 !important;
-              --button-primary-bgcolor: #cdd6f4 !important;
-              --button-primary-hover-bgcolor: #cdd6f4 !important;
-              --button-primary-active-bgcolor: #cdd6f4 !important;
-              --urlbarView-highlight-color: #cdd6f4 !important;
-              --urlbarView-highlight-background: #585b70 !important;
+              --arrowpanel-border-color: ${colors.base05} !important;
+              --arrowpanel-color: ${colors.base05} !important;
+              --input-color: ${colors.base05} !important;
+              --toolbar-field-color: ${colors.base05} !important;
+              --lwt-text-color: ${colors.base05} !important;
+              --toolbar-color: ${colors.base05} !important;
+              --toolbar-field-focus-color: ${colors.base05} !important;
+              --newtab-text-primary-color: ${colors.base05} !important;
+              --tab-selected-textcolor: ${colors.base05} !important;
+              --tab-icon-overlay-fill: ${colors.base05} !important;
+              --toolbarbutton-icon-fill: ${colors.base05} !important;
+              --sidebar-text-color: ${colors.base05} !important;
+              --button-primary-bgcolor: ${colors.base05} !important;
+              --button-primary-hover-bgcolor: ${colors.base05} !important;
+              --button-primary-active-bgcolor: ${colors.base05} !important;
+              --urlbarView-highlight-color: ${colors.base05} !important;
+              --urlbarView-highlight-background: ${colors.base04} !important;
               --inactive-titlebar-opacity: 1.0 !important;
             }
             tab-close-button.close-icon {
@@ -153,44 +153,44 @@ in
               color: red;
             }
             tab-label-container {
-              color: #07070b;
+              color: ${colors.base00};
             }
             #_c607c8df-14a7-4f28-894f-29e8722976af_-BAP {
-               color: #07070b;
+               color: ${colors.base00};
             }
             #TabsToolbar {
-              background-color: #07070b !important;
+              background-color: ${colors.base00} !important;
             }
             #nav-bar {
-              background-color: #07070b;
+              background-color: ${colors.base00};
             }
             #tracking-protection-icon-container {
-              background-color: #07070b;
+              background-color: ${colors.base00};
             }
             #appMenu-multiView {
-              background-color: #07070b !important;
+              background-color: ${colors.base00} !important;
             }
             .urlbar-page-action {
-              background-color: #07070b;
+              background-color: ${colors.base00};
             }
             .identity-box-button  {
-              background-color: #07070b;
+              background-color: ${colors.base00};
             }
             .urlbar-input-box {
-              background-color: #07070b;
+              background-color: ${colors.base00};
             }
             .tab-icon-image {
               display: none;
             }
             .tabbrowser-tab {
-              color: #cdd6f4 !important;
+              color: ${colors.base05} !important;
               color-scheme: unset;
             }
             tab[selected="true"] > .tab-stack > .tab-background {
-              background: #11111b !important;
+              background: ${colors.base01} !important;
             }
             tab:not([selected="true"]) > .tab-stack:hover > .tab-background {
-              background: #11111b !important;
+              background: ${colors.base01} !important;
             }
             #firefox-view-button {
               list-style-image : url(nix-snowflake.svg) !important;
