@@ -14,7 +14,7 @@ in
   hm.imports = [
     inputs.dankmaterialshell.homeModules.dankMaterialShell
   ];
-  dankMaterialShell = {
+  hm.programs.dankMaterialShell = {
     enable = true;
     enableKeybinds = false;
     enableSystemd = false;
@@ -23,7 +23,7 @@ in
     enableClipboard = true;
     enableAudioWavelength = true;
   };
- hm.xdg.configFile."DankMaterialShell/theme.json".text = builtins.toJSON {
+  hm.xdg.configFile."DankMaterialShell/theme.json".text = builtins.toJSON {
     dark = {
       name = "Nebula Ice (Stylix)";
       primary = colors.base0D;
@@ -68,10 +68,11 @@ in
       info = "#0088ff";
       success = "#00aa66";
     };
+  };
 
-  hm.xdg.configFile."DankMaterialShell/config.json".text = builtins.toJSON {
+  hm.xdg.configFile."DankMaterialShell/settings.json".text = builtins.toJSON {
     currentThemeName = "custom";
-    customThemeFile = "${config.xdg.configHome}/DankMaterialShell/theme.json";
+    customThemeFile = "${config.hm.xdg.configHome}/DankMaterialShell/theme.json";
     topBarTransparency = 0.75;
     topBarWidgetTransparency = 0.85;
     popupTransparency = 0.92;
