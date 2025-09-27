@@ -15,7 +15,7 @@ in
   # nixpkgs.overlays = [
   #   inputs.hyprpanel.overlay
   # ];
-  hm = {
+  hm.cenunix = {
     # imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
     programs.hyprpanel = {
       enable = true;

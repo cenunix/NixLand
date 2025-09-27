@@ -11,7 +11,7 @@ let
   colors = config.lib.stylix.colors.withHashtag;
 in
 {
-  hm.programs.nvf.settings.vim = {
+  hm.cenunix.programs.nvf.settings.vim = {
     extraPackages = with pkgs; [
       fd
       imagemagick

@@ -17,7 +17,7 @@ let
   ];
 in
 rec {
-  hm = mkIf (builtins.elem device.type acceptedTypes) {
+  hm.cenunix = mkIf (builtins.elem device.type acceptedTypes) {
 
     gtk = {
       enable = true;

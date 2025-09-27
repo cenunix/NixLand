@@ -7,14 +7,14 @@
   ...
 }:
 {
-  hm.home.packages = with pkgs; [
+  hm.cenunix.home.packages = with pkgs; [
     gist # manage github gists
     act # local github actions
     zsh-forgit # zsh plugin to load forgit via `git forgit`
     gitflow
   ];
 
-  hm.programs = {
+  hm.cenunix.programs = {
     # a command-line tool for github
     gh = {
       enable = true;

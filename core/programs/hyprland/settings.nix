@@ -14,7 +14,7 @@ let
   inherit (modules.style) pointerCursor;
 in
 {
-  hm.wayland.windowManager.hyprland.extraConfig =
+  hm.cenunix.wayland.windowManager.hyprland.extraConfig =
     let
       monitorConfig = builtins.concatStringsSep "\n" (
         builtins.map (monitor: "monitor=${monitor}") device.monitors
@@ -25,7 +25,7 @@ in
       ${monitorConfig}
       ${workspacesConfig}
     '';
-  hm.wayland.windowManager.hyprland.settings = {
+  hm.cenunix.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     exec-once = [
       "hyprctl setcursor ${pointerCursor.name} ${toString pointerCursor.size}"

@@ -8,7 +8,7 @@
   ...
 }:
 {
-  hm.imports = [
+  hm.cenunix.imports = [
     inputs.nvf.homeManagerModules.default
   ];
   imports = [
@@ -18,7 +18,7 @@
     ./misc.nix
     ./utility.nix
   ];
-  hm.programs.nvf = {
+  hm.cenunix.programs.nvf = {
     enable = true;
     # most settings are documented in the appendix
     settings.vim = {

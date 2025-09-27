@@ -4,17 +4,17 @@
   ...
 }:
 {
-  # hm.imports = [
+  # hm.cenunix.imports = [
   #   # inputs.anyrun.homeManagerModules.default
   # ];
-  hm.services = {
+  hm.cenunix.services = {
     walker = {
       enable = true;
       systemd.enable = true;
     };
   };
 
-  hm.programs = {
+  hm.cenunix.programs = {
     anyrun = {
       enable = false;
       extraConfigFiles = {

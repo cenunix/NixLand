@@ -6,7 +6,7 @@
   ...
 }:
 {
-  hm.programs = {
+  hm.cenunix.programs = {
     direnv = {
       enable = true;
       enableZshIntegration = true;

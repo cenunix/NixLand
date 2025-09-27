@@ -11,10 +11,10 @@ let
   colors = config.lib.stylix.colors.withHashtag;
 in
 {
-  hm.imports = [
+  hm.cenunix.imports = [
     inputs.dankmaterialshell.homeModules.dankMaterialShell
   ];
-  hm.programs.dankMaterialShell = {
+  hm.cenunix.programs.dankMaterialShell = {
     enable = true;
     enableKeybinds = false;
     enableSystemd = false;
@@ -23,7 +23,7 @@ in
     enableClipboard = true;
     enableAudioWavelength = true;
   };
-  hm.xdg.configFile."DankMaterialShell/theme.json".text = builtins.toJSON {
+  hm.cenunix.xdg.configFile."DankMaterialShell/theme.json".text = builtins.toJSON {
     dark = {
       name = "Nebula Ice (Stylix)";
       primary = colors.base0D;
@@ -70,9 +70,9 @@ in
     };
   };
 
-  hm.xdg.configFile."DankMaterialShell/settings.json".text = builtins.toJSON {
+  hm.cenunix.xdg.configFile."DankMaterialShell/settings.json".text = builtins.toJSON {
     currentThemeName = "custom";
-    customThemeFile = "${config.hm.xdg.configHome}/DankMaterialShell/theme.json";
+    customThemeFile = "${config.hm.cenunix.xdg.configHome}/DankMaterialShell/theme.json";
     topBarTransparency = 0.75;
     topBarWidgetTransparency = 0.85;
     popupTransparency = 0.92;

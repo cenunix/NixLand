@@ -30,7 +30,7 @@
   #           "NIXOS_OZONE_WL" = "1";
   #         };
   #         prefer-no-csd = true;
-  #         screenshot-path = "${config.hm.xdg.userDirs.pictures}/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
+  #         screenshot-path = "${config.hm.cenunix.xdg.userDirs.pictures}/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png";
   #         window-rules = [
   #           {
   #             matches = [

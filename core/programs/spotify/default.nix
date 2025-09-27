@@ -12,7 +12,7 @@
   imports = [
     ./spotify-gui.nix
   ];
-  hm.home.packages = [
+  hm.cenunix.home.packages = [
     pkgs.spotify-player
   ];
 }

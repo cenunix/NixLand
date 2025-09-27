@@ -1,10 +1,7 @@
-{ lib, config, ... }:
-
+{ lib, ... }:
 {
-  options.hm = lib.mkOption {
-    type = lib.types.attrs;
-    description = "Shortcut alias to home-manager.users.cenunix.";
-  };
-
-  config.hm = config.home-manager.users.cenunix;
+  imports = [
+    # Only alias hm.cenunix.*  -> home-manager.users.cenunix.*
+    (lib.mkAliasOptionModule [ "hm" "cenunix" ] [ "home-manager" "users" "cenunix" ])
+  ];
 }

@@ -11,7 +11,7 @@ let
 in
 {
 
-  hm = {
+  hm.cenunix = {
     home.packages = [
       devinit
     ];
@@ -24,8 +24,8 @@ in
           local mux = wezterm.mux
           local config = wezterm.config_builder()
           local act = wezterm.action
-          config.max_fps = 240 
-          config.animation_fps = 240 
+          config.max_fps = 240
+          config.animation_fps = 240
           config.use_fancy_tab_bar = false
           config.front_end = "OpenGL"
           config.enable_wayland = true

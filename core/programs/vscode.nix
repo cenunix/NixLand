@@ -18,7 +18,7 @@ let
 in
 {
   config = mkIf (builtins.elem device.type acceptedTypes) {
-    hm.programs.vscode = {
+    hm.cenunix.programs.vscode = {
       enable = true;
       profiles.default = {
         enableExtensionUpdateCheck = true;

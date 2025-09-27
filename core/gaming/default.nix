@@ -24,7 +24,7 @@ with lib;
       protontricks.enable = true;
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
-    hm.programs.mangohud = {
+    hm.cenunix.programs.mangohud = {
       enable = true;
       settings = {
         fps_limit = "240,0,60,120,180";

@@ -12,7 +12,7 @@ in
     ./gtk.nix
     inputs.stylix.nixosModules.stylix
   ];
-  hm.stylix = {
+  hm.cenunix.stylix = {
     targets.nvf.enable = false;
     targets.firefox.enable = false;
     targets.librewolf.enable = false;

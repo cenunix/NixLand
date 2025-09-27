@@ -21,7 +21,7 @@ let
   );
 in
 {
-  hm.wayland.windowManager.hyprland = {
+  hm.cenunix.wayland.windowManager.hyprland = {
     # extraConfig = ''
     #   bind=CTRL,ALT_L,submap,passthrough
     #   submap=passthrough

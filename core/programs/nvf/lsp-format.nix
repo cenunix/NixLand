@@ -8,7 +8,7 @@
   ...
 }:
 {
-  hm.programs.nvf.settings.vim = {
+  hm.cenunix.programs.nvf.settings.vim = {
     formatter = {
       conform-nvim = {
         enable = true;

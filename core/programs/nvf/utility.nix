@@ -8,7 +8,7 @@
   ...
 }:
 {
-  hm.programs.nvf.settings.vim.utility = {
+  hm.cenunix.programs.nvf.settings.vim.utility = {
     preview = {
       markdownPreview = {
         enable = true;

@@ -14,7 +14,7 @@ let
   acceptedTypes = [ "desktop" ];
 in
 {
-  hm = mkIf (builtins.elem device.type acceptedTypes) {
+  hm.cenunix = mkIf (builtins.elem device.type acceptedTypes) {
     imports = [
       inputs.spicetify-nix.homeManagerModules.spicetify
     ];

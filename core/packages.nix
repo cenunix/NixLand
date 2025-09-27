@@ -12,7 +12,7 @@ let
   device = config.modules.device;
 in
 {
-  hm.home.packages =
+  hm.cenunix.home.packages =
     with pkgs;
     [ ]
     ++

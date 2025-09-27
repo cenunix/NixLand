@@ -37,7 +37,7 @@ in
         alsa-utils
       ]
       ++ optionals (builtins.elem device.type [ "armlaptop" ]) [ alsa-ucm-conf ];
-    hm.services.blueman-applet.enable = false;
+    hm.cenunix.services.blueman-applet.enable = false;
     services = {
       # blueman.enable = true;
       pulseaudio.enable = false;

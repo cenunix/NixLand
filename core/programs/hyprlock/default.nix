@@ -11,7 +11,7 @@ let
 in
 {
   # imports = [ inputs.hyprlock.homeManagerModules.default ];
-  hm.programs.hyprlock = {
+  hm.cenunix.programs.hyprlock = {
     enable = true;
 
     settings = {

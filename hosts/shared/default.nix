@@ -16,13 +16,16 @@ in
     # (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "cenunix" ])
     ./options
     ../../core
+    ./hm-alias.nix
   ];
 
   home-manager = {
     extraSpecialArgs = { inherit inputs outputs pkgs; };
     backupFileExtension = "backup";
     users = {
-      cenunix = ../../core/home.nix;
+      cenunix = {
+        imports = [ ../../core/home.nix ];
+      };
     };
   };
 

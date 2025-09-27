@@ -8,7 +8,7 @@
   ...
 }:
 {
-  hm.programs.nvf.settings.vim = {
+  hm.cenunix.programs.nvf.settings.vim = {
     statusline.lualine = {
       enable = true;
       theme = "base16";
@@ -98,7 +98,7 @@
         ''
           {
             "filename",
-            icon = '',  
+            icon = '',
           }
         ''
       ];

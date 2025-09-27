@@ -7,9 +7,9 @@
   ...
 }:
 {
-  hm.xdg.configFile."lf/icons".source = ./icons;
+  hm.cenunix.xdg.configFile."lf/icons".source = ./icons;
 
-  hm.programs.lf = {
+  hm.cenunix.programs.lf = {
     enable = true;
     commands = {
       dragon-out = ''%${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';

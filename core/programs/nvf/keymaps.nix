@@ -18,7 +18,7 @@ let
   };
 in
 {
-  hm.programs.nvf.settings.vim = {
+  hm.cenunix.programs.nvf.settings.vim = {
     binds.whichKey = {
       enable = true;
       register = {

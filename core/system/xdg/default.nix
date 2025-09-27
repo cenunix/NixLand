@@ -39,31 +39,31 @@ let
   };
 in
 {
-  hm = {
+  hm.cenunix = {
     xdg = {
       enable = true;
-      cacheHome = "${config.hm.home.homeDirectory}/.cache";
-      configHome = "${config.hm.home.homeDirectory}/.config";
-      dataHome = "${config.hm.home.homeDirectory}/.local/share";
-      stateHome = "${config.hm.home.homeDirectory}/.local/state";
+      cacheHome = "${config.hm.cenunix.home.homeDirectory}/.cache";
+      configHome = "${config.hm.cenunix.home.homeDirectory}/.config";
+      dataHome = "${config.hm.cenunix.home.homeDirectory}/.local/share";
+      stateHome = "${config.hm.cenunix.home.homeDirectory}/.local/state";
 
       userDirs = {
         enable = true;
         createDirectories = true;
 
-        download = "${config.hm.home.homeDirectory}/Downloads";
-        desktop = "${config.hm.home.homeDirectory}/Desktop";
-        documents = "${config.hm.home.homeDirectory}/Documents";
+        download = "${config.hm.cenunix.home.homeDirectory}/Downloads";
+        desktop = "${config.hm.cenunix.home.homeDirectory}/Desktop";
+        documents = "${config.hm.cenunix.home.homeDirectory}/Documents";
 
-        publicShare = "${config.hm.home.homeDirectory}/.local/share/public";
-        templates = "${config.hm.home.homeDirectory}/.local/share/templates";
+        publicShare = "${config.hm.cenunix.home.homeDirectory}/.local/share/public";
+        templates = "${config.hm.cenunix.home.homeDirectory}/.local/share/templates";
 
-        music = "${config.hm.home.homeDirectory}/Media/Music";
-        pictures = "${config.hm.home.homeDirectory}/Media/Pictures";
-        videos = "${config.hm.home.homeDirectory}/Media/Videos";
+        music = "${config.hm.cenunix.home.homeDirectory}/Media/Music";
+        pictures = "${config.hm.cenunix.home.homeDirectory}/Media/Pictures";
+        videos = "${config.hm.cenunix.home.homeDirectory}/Media/Videos";
 
         extraConfig = {
-          XDG_SCREENSHOTS_DIR = "${config.hm.xdg.userDirs.pictures}/Screenshots";
+          XDG_SCREENSHOTS_DIR = "${config.hm.cenunix.xdg.userDirs.pictures}/Screenshots";
         };
       };
 

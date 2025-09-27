@@ -7,7 +7,7 @@
   ...
 }:
 {
-  hm.programs.kitty = {
+  hm.cenunix.programs.kitty = {
     enable = true;
     # font.name = "monospace";
     # font.size = 14;
