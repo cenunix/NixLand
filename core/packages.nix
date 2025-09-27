@@ -31,7 +31,7 @@ in
           obsidian
           zathura
           gsettings-desktop-schemas
-          calibre
+          # calibre
           hyprpicker
           gnome-podcasts
           grimblast

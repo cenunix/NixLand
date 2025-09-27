@@ -11,8 +11,8 @@
     ./anyrun
     ./btop
     ./discord
-    # ./hyprland
-    # ./hyprlock
+    ./hyprland
+    ./hyprlock
     # ./hyprpanel
     ./lf
     ./nvf
