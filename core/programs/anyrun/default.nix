@@ -1,20 +1,19 @@
-{
-  pkgs,
-  inputs,
-  ...
+{ pkgs
+, inputs
+, ...
 }:
 {
-  # hm.cenunix.imports = [
+  # hm.imports = [
   #   # inputs.anyrun.homeManagerModules.default
   # ];
-  hm.cenunix.services = {
+  hm.services = {
     walker = {
       enable = true;
       systemd.enable = true;
     };
   };
 
-  hm.cenunix.programs = {
+  hm.programs = {
     anyrun = {
       enable = false;
       extraConfigFiles = {

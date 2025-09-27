@@ -1,14 +1,13 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 {
-  hm.cenunix.programs.nvf.settings.vim = {
+  hm.programs.nvf.settings.vim = {
     formatter = {
       conform-nvim = {
         enable = true;

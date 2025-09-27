@@ -1,11 +1,10 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 with lib;
 let
@@ -14,7 +13,7 @@ let
   acceptedTypes = [ "desktop" ];
 in
 {
-  hm.cenunix = mkIf (builtins.elem device.type acceptedTypes) {
+  hm = mkIf (builtins.elem device.type acceptedTypes) {
     imports = [
       inputs.spicetify-nix.homeManagerModules.spicetify
     ];

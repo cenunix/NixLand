@@ -1,11 +1,10 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 let
   inherit (lib) mkIf;
@@ -17,7 +16,7 @@ let
   ];
 in
 rec {
-  hm.cenunix = mkIf (builtins.elem device.type acceptedTypes) {
+  hm = mkIf (builtins.elem device.type acceptedTypes) {
 
     gtk = {
       enable = true;

@@ -1,11 +1,10 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 with lib;
 let
@@ -18,7 +17,7 @@ let
 in
 {
   config = mkIf (builtins.elem device.type acceptedTypes) {
-    hm.cenunix.programs.vscode = {
+    hm.programs.vscode = {
       enable = true;
       profiles.default = {
         enableExtensionUpdateCheck = true;

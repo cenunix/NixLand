@@ -1,12 +1,11 @@
-{
-  inputs,
-  pkgs,
-  config,
-  osConfig,
-  ...
+{ inputs
+, pkgs
+, config
+, osConfig
+, ...
 }:
 {
-  hm.cenunix.programs = {
+  hm.programs = {
     direnv = {
       enable = true;
       enableZshIntegration = true;

@@ -1,11 +1,10 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 let
   inherit (lib) mkIf;
@@ -14,7 +13,7 @@ let
   inherit (modules.style) pointerCursor;
 in
 {
-  hm.cenunix.wayland.windowManager.hyprland.extraConfig =
+  hm.wayland.windowManager.hyprland.extraConfig =
     let
       monitorConfig = builtins.concatStringsSep "\n" (
         builtins.map (monitor: "monitor=${monitor}") device.monitors
@@ -25,7 +24,7 @@ in
       ${monitorConfig}
       ${workspacesConfig}
     '';
-  hm.cenunix.wayland.windowManager.hyprland.settings = {
+  hm.wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
     exec-once = [
       "hyprctl setcursor ${pointerCursor.name} ${toString pointerCursor.size}"
@@ -95,9 +94,9 @@ in
     dwindle = {
       pseudotile = false; # enable pseudotiling on dwindle
     };
-    gestures = {
-      workspace_swipe = false;
-    };
+    # gestures = {
+    #   workspace_swipe = false;
+    # };
     plugin = {
       overview = {
         centerAligned = true;

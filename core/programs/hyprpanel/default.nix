@@ -1,11 +1,10 @@
-{
-  inputs,
-  pkgs,
-  config,
-  osConfig,
-  self,
-  lib,
-  ...
+{ inputs
+, pkgs
+, config
+, osConfig
+, self
+, lib
+, ...
 }:
 with lib;
 let
@@ -15,7 +14,7 @@ in
   # nixpkgs.overlays = [
   #   inputs.hyprpanel.overlay
   # ];
-  hm.cenunix = {
+  hm = {
     # imports = [ inputs.hyprpanel.homeManagerModules.hyprpanel ];
     programs.hyprpanel = {
       enable = true;

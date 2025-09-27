@@ -1,8 +1,7 @@
-{
-  inputs,
-  pkgs,
-  config,
-  ...
+{ inputs
+, pkgs
+, config
+, ...
 }:
 let
   devinit = pkgs.writeShellScriptBin "devinit" ''
@@ -11,7 +10,7 @@ let
 in
 {
 
-  hm.cenunix = {
+  hm = {
     home.packages = [
       devinit
     ];

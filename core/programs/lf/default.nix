@@ -1,15 +1,14 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, ...
 }:
 {
-  hm.cenunix.xdg.configFile."lf/icons".source = ./icons;
+  hm.xdg.configFile."lf/icons".source = ./icons;
 
-  hm.cenunix.programs.lf = {
+  hm.programs.lf = {
     enable = true;
     commands = {
       dragon-out = ''%${pkgs.xdragon}/bin/xdragon -a -x "$fx"'';

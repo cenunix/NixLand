@@ -3,7 +3,7 @@ let
   inherit (lib) mkIf;
 in
 {
-  hm.cenunix.wayland.windowManager.hyprland.settings = {
+  hm.wayland.windowManager.hyprland.settings = {
     # layer rules
     layerrule =
       let

@@ -1,15 +1,14 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 with lib;
 {
-  hm.cenunix.imports = [
+  hm.imports = [
     inputs.hyprland.homeManagerModules.default
   ];
   imports = [
@@ -31,7 +30,7 @@ with lib;
     brightnessctl
   ];
 
-  hm.cenunix = {
+  hm = {
     wayland.windowManager.hyprland = {
       enable = true;
       package = null;

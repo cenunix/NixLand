@@ -1,14 +1,13 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 {
-  hm.cenunix.programs.nvf.settings.vim = {
+  hm.programs.nvf.settings.vim = {
     statusline.lualine = {
       enable = true;
       theme = "base16";
@@ -39,51 +38,51 @@
       # Active sections: we use the built-in "mode" component (which will use our custom mapping)
       activeSection.a = [
         "{
-              (function()
-               local mode_map = {
-                 ['n']   = '',
-                 ['no']  = '',
-                 ['nov'] = '',
-                 ['noV'] = '',
-                 ['no�'] = '',
-                 ['niI'] = '',
-                 ['niR'] = '',
-                 ['niV'] = '',
-                 ['nt']  = '',
-                 ['v']   = '',
-                 ['vs']  = '',
-                 ['V']   = '',
-                 ['Vs']  = '',
-                 ['�']   = '',
-                 ['�s']  = '',
-                 ['s']   = '',
-                 ['S']   = '',
-                 ['�']   = '',
-                 ['i']   = '',
-                 ['ic']  = '',
-                 ['ix']  = '',
-                 ['R']   = '',
-                 ['Rc']  = '',
-                 ['Rx']  = '',
-                 ['Rv']  = '',
-                 ['Rvc'] = '',
-                 ['Rvx'] = '',
-                 ['c']   = '',
-                 ['cv']  = '',
-                 ['ce']  = '',
-                 ['r']   = '',
-                 ['rm']  = '',
-                 ['r?']  = '',
-                 ['!']   = '',
-                 ['t']   = '',
-               }
-               return function()
-                 return mode_map[vim.api.nvim_get_mode().mode] or '__'
-               end
-            end)(),
-            separator = { left = '' },
-            right_padding = 2
-          }"
+            (function()
+             local mode_map = {
+               ['n']   = '',
+               ['no']  = '',
+               ['nov'] = '',
+               ['noV'] = '',
+               ['no�'] = '',
+               ['niI'] = '',
+               ['niR'] = '',
+               ['niV'] = '',
+               ['nt']  = '',
+               ['v']   = '',
+               ['vs']  = '',
+               ['V']   = '',
+               ['Vs']  = '',
+               ['�']   = '',
+               ['�s']  = '',
+               ['s']   = '',
+               ['S']   = '',
+               ['�']   = '',
+               ['i']   = '',
+               ['ic']  = '',
+               ['ix']  = '',
+               ['R']   = '',
+               ['Rc']  = '',
+               ['Rx']  = '',
+               ['Rv']  = '',
+               ['Rvc'] = '',
+               ['Rvx'] = '',
+               ['c']   = '',
+               ['cv']  = '',
+               ['ce']  = '',
+               ['r']   = '',
+               ['rm']  = '',
+               ['r?']  = '',
+               ['!']   = '',
+               ['t']   = '',
+             }
+             return function()
+               return mode_map[vim.api.nvim_get_mode().mode] or '__'
+             end
+          end)(),
+          separator = { left = '' },
+          right_padding = 2
+        }"
       ];
       activeSection.b = [
         ''

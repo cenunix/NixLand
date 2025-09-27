@@ -3,25 +3,26 @@ let
   inherit (config) modules;
   inherit (modules.programs) default;
   workspaces = builtins.concatLists (
-    builtins.genList (
-      x:
-      let
-        ws =
-          let
-            c = (x + 1) / 10;
-          in
-          builtins.toString (x + 1 - (c * 10));
-      in
-      [
-        "$mod, ${ws}, workspace, ${toString (x + 1)}"
-        "Alt_L, ${ws}, workspace, ${toString (x + 1)}"
-        "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-      ]
-    ) 10
+    builtins.genList
+      (
+        x:
+        let
+          ws =
+            let
+              c = (x + 1) / 10;
+            in
+            builtins.toString (x + 1 - (c * 10));
+        in
+        [
+          "$mod, ${ws}, workspace, ${toString (x + 1)}"
+          "Alt_L, ${ws}, workspace, ${toString (x + 1)}"
+          "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+        ]
+      ) 10
   );
 in
 {
-  hm.cenunix.wayland.windowManager.hyprland = {
+  hm.wayland.windowManager.hyprland = {
     # extraConfig = ''
     #   bind=CTRL,ALT_L,submap,passthrough
     #   submap=passthrough
@@ -54,7 +55,7 @@ in
 
         "$mod, V, exec, hyprctl keyword 'device[razer-razer-viper-ultimate-dongle]:enabled' false"
         "$mod SHIFT, V, exec, hyprctl keyword 'device[razer-razer-viper-ultimate-dongle]:enabled' true"
-        "$mod, I, exec, hyprlock"
+        "$mod, I, exec, dms ipc call lock lock"
         "$mod, Return, exec, ${default.terminal} start --always-new-process"
         "$mod SHIFT, Return, exec, ${default.terminal}"
         "$mod, E, exec, ${default.fileManager}"
@@ -63,16 +64,16 @@ in
         "$mod, P, exec, grimblast --notify copysave output"
         "$mod SHIFT, P, exec, grimblast --notify copysave area"
         "$mod SHIFT, P, exec, ags -b hypr -r 'recorder.screenshot(true)'"
-        "$mod, SPACE, exec, walker"
+        "$mod, SPACE, exec, dms ipc call spotlight toggle"
       ]
       ++ workspaces;
 
       bindle = [
-        ", XF86MonBrightnessUp,exec,brightnessctl s 5%+"
-        ", XF86MonBrightnessDown,exec,brightnessctl s 5%-"
-        ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
-        ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
-        ", XF86AudioMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle"
+        ", XF86MonBrightnessUp, exec, dms ipc call brightness increment 5"
+        ", XF86MonBrightnessDown, exec, dms ipc call brightness decrement 5"
+        ", XF86AudioRaiseVolume, exec, dms ipc call audio increment 3"
+        ", XF86AudioLowerVolume, exec, dms ipc call audio decrement 3"
+        ", XF86AudioMute, exec, dms ipc call audio mute"
       ];
     };
   };

@@ -1,7 +1,7 @@
 { lib, ... }:
 {
   imports = [
-    # Only alias hm.cenunix.*  -> home-manager.users.cenunix.*
-    (lib.mkAliasOptionModule [ "hm" "cenunix" ] [ "home-manager" "users" "cenunix" ])
+    # Alias hm.* -> home-manager.users.cenunix.*
+    (lib.mkAliasOptionModule [ "hm" ] [ "home-manager" "users" "cenunix" ])
   ];
 }

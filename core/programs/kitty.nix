@@ -1,13 +1,12 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, ...
 }:
 {
-  hm.cenunix.programs.kitty = {
+  hm.programs.kitty = {
     enable = true;
     # font.name = "monospace";
     # font.size = 14;

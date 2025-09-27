@@ -1,10 +1,9 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, ...
 }:
 let
   inherit (config) modules;
@@ -24,7 +23,7 @@ with lib;
       protontricks.enable = true;
       extraCompatPackages = [ pkgs.proton-ge-bin ];
     };
-    hm.cenunix.programs.mangohud = {
+    hm.programs.mangohud = {
       enable = true;
       settings = {
         fps_limit = "240,0,60,120,180";

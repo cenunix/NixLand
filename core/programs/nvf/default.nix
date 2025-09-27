@@ -1,14 +1,13 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 {
-  hm.cenunix.imports = [
+  hm.imports = [
     inputs.nvf.homeManagerModules.default
   ];
   imports = [
@@ -18,7 +17,7 @@
     ./misc.nix
     ./utility.nix
   ];
-  hm.cenunix.programs.nvf = {
+  hm.programs.nvf = {
     enable = true;
     # most settings are documented in the appendix
     settings.vim = {

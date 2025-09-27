@@ -20,7 +20,7 @@ let
 in
 {
   config = mkIf (builtins.elem device.type acceptedTypes) {
-    hm.cenunix.programs = {
+    hm.programs = {
       librewolf = mkForce {
         enable = true;
         package = pkgs.librewolf;

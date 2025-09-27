@@ -1,8 +1,7 @@
-{
-  inputs,
-  osConfig,
-  config,
-  ...
+{ inputs
+, osConfig
+, config
+, ...
 }:
 let
   inherit (config) modules;
@@ -11,7 +10,7 @@ let
 in
 {
   # imports = [ inputs.hyprlock.homeManagerModules.default ];
-  hm.cenunix.programs.hyprlock = {
+  hm.programs.hyprlock = {
     enable = true;
 
     settings = {

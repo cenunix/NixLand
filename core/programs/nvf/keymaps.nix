@@ -1,11 +1,10 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 let
   mkKeymap = mode: key: action: desc: {
@@ -18,7 +17,7 @@ let
   };
 in
 {
-  hm.cenunix.programs.nvf.settings.vim = {
+  hm.programs.nvf.settings.vim = {
     binds.whichKey = {
       enable = true;
       register = {

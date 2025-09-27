@@ -1,10 +1,9 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, ...
 }:
 with lib;
 let
@@ -37,7 +36,7 @@ in
         alsa-utils
       ]
       ++ optionals (builtins.elem device.type [ "armlaptop" ]) [ alsa-ucm-conf ];
-    hm.cenunix.services.blueman-applet.enable = false;
+    hm.services.blueman-applet.enable = false;
     services = {
       # blueman.enable = true;
       pulseaudio.enable = false;

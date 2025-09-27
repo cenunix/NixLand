@@ -1,14 +1,13 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, ...
 }:
 {
-  hm.cenunix.programs = {
+  hm.programs = {
     niri = {
       settings = {
         environment."NIXOS_OZONE_WL" = "1";
@@ -102,13 +101,15 @@
             })
             (binds {
               suffixes = builtins.listToAttrs (
-                map (n: {
-                  name = toString n;
-                  value = [
-                    "workspace"
-                    (n + 1)
-                  ]; # workspace 1 is empty; workspace 2 is the logical first.
-                }) (range 1 9)
+                map
+                  (n: {
+                    name = toString n;
+                    value = [
+                      "workspace"
+                      (n + 1)
+                    ]; # workspace 1 is empty; workspace 2 is the logical first.
+                  })
+                  (range 1 9)
               );
               prefixes."Mod" = "focus";
               prefixes."Mod+Ctrl" = "move-window-to";

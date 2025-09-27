@@ -1,12 +1,11 @@
-{
-  inputs,
-  outputs,
-  lib,
-  config,
-  pkgs,
-  osConfig,
-  self,
-  ...
+{ inputs
+, outputs
+, lib
+, config
+, pkgs
+, osConfig
+, self
+, ...
 }:
 with lib;
 let
@@ -19,7 +18,7 @@ let
 in
 {
 
-  hm.cenunix = mkIf (builtins.elem device.type acceptedTypes) {
+  hm = mkIf (builtins.elem device.type acceptedTypes) {
     imports = [
       inputs.nixcord.homeModules.nixcord
     ];
