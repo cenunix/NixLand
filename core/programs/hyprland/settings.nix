@@ -1,10 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 let
   inherit (lib) mkIf;
@@ -28,10 +29,7 @@ in
     "$mod" = "SUPER";
     exec-once = [
       "hyprctl setcursor ${pointerCursor.name} ${toString pointerCursor.size}"
-      "hyprsunset --temperature 5700"
-      "walker --gapplication-service"
-      # "swww-daemon --format xrgb"
-      # "blueman-applet"
+      # "hyprsunset --temperature 5700"
     ];
     input = {
       follow_mouse = 1;

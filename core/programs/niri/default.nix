@@ -1,13 +1,17 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 {
   # nixpkgs.overlays = [ inputs.niri-flake.overlays.niri ];
+  hm.imports = [
+    inputs.dankmaterialshell.homeModules.dankMaterialShell.default
+  ];
   imports = [
     # inputs.niri.nixosModules.niri
     ./dms.nix

@@ -1,18 +1,39 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  dmsPkgs,
+  ...
 }:
 let
   colors = config.lib.stylix.colors.withHashtag;
 in
 {
-  hm.imports = [
-    inputs.dankmaterialshell.homeModules.dankMaterialShell.default
-  ];
+
+  hm.systemd.user.services = {
+    dms = {
+      Unit = {
+        Description = "DankMaterialShell Service";
+        After = [ "graphical-session.target" ];
+        PartOf = [ "graphical-session.target" ];
+        ConditionEnvironment = "WAYLAND_DISPLAY";
+      };
+
+      Service = {
+        ExecStart = "${
+          inputs.dankmaterialshell.inputs.dms-cli.packages.${pkgs.system}.default
+        }/bin/dms run";
+        Restart = "on-failure";
+      };
+
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
+  };
   hm.programs.dankMaterialShell = {
     enable = true;
     # enableKeybinds = false;
