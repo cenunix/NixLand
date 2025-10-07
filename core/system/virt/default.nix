@@ -44,7 +44,7 @@ in
       with pkgs;
       [ ]
       ++ optionals (sys.qemu.enable) [
-        # qemu-anti-detection
+        qemu-anti-detection
         virt-manager
         virt-viewer
         spice
