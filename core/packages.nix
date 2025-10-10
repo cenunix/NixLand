@@ -42,7 +42,7 @@ in
           telegram-desktop
           bitwarden-desktop
           chromium
-          todoist
+          todoist-electron
 
           #media apps
           mpv

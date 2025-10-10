@@ -1,10 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 with lib;
 {
@@ -40,8 +41,8 @@ with lib;
         enable = false;
       };
     };
-    services.hyprpaper = {
-      enable = true;
-    };
+    # services.hyprpaper = {
+    #   enable = true;
+    # };
   };
 }

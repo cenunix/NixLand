@@ -1,7 +1,8 @@
-{ inputs
-, osConfig
-, config
-, ...
+{
+  inputs,
+  osConfig,
+  config,
+  ...
 }:
 let
   inherit (config) modules;
@@ -11,7 +12,7 @@ in
 {
   # imports = [ inputs.hyprlock.homeManagerModules.default ];
   hm.programs.hyprlock = {
-    enable = true;
+    enable = false;
 
     settings = {
       general = {
