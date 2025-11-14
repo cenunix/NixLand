@@ -29,7 +29,7 @@ in
       fstrim.enable = true;
       avahi.enable = true;
       gvfs.enable = true; # Mount, trash, and other functionalities
-      # flatpak.enable = true;
+      flatpak.enable = true;
       upower.enable = device.type == "armlaptop";
       dbus = {
         packages = with pkgs; [
