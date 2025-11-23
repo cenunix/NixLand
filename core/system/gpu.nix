@@ -44,7 +44,7 @@ in
         })
       ];
       systemPackages = with pkgs; [
-        glxinfo
+        mesa-demos
         libva
         libva-utils
         xorg.libxcb

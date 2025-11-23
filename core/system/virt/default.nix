@@ -81,8 +81,8 @@ in
         enable = true;
         qemu = {
           package = qemu-anti-detection;
-          ovmf.enable = true;
-          ovmf.packages = [ pkgs.OVMFFull.fd ];
+          # ovmf.enable = true;
+          # ovmf.packages = [ pkgs.OVMFFull.fd ];
           swtpm.enable = true;
         };
       };

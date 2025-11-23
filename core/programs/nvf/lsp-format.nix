@@ -1,10 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 {
   hm.programs.nvf.settings.vim = {
@@ -52,7 +53,7 @@
         enable = true;
         lsp = {
           enable = true;
-          package = pkgs.clang-tools_19;
+          package = pkgs.llvmPackages_19.clang-tools;
           server = "clangd";
         };
       };

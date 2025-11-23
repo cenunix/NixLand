@@ -1,8 +1,9 @@
-{ inputs
-, pkgs
-, config
-, osConfig
-, ...
+{
+  inputs,
+  pkgs,
+  config,
+  osConfig,
+  ...
 }:
 let
   inherit (config.modules.style) pointerCursor;
@@ -38,7 +39,7 @@ in
       };
 
       emoji = {
-        package = pkgs.noto-fonts-emoji;
+        package = pkgs.noto-fonts-color-emoji;
         name = "Noto Color Emoji";
       };
     };

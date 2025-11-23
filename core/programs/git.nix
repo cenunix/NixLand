@@ -1,9 +1,10 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }:
 {
   hm.home.packages = with pkgs; [
@@ -32,7 +33,7 @@
 
     git = {
       enable = true;
-      package = pkgs.gitAndTools.gitFull;
+      # package = pkgs.gitAndTools.gitFull;
       userName = "cenunix";
       userEmail = "user55596@protonmail.com";
       ignores = [

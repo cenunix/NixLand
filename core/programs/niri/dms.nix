@@ -23,9 +23,7 @@ in
       };
 
       Service = {
-        ExecStart = "${
-          inputs.dankmaterialshell.inputs.dms-cli.packages.${pkgs.system}.default
-        }/bin/dms run";
+        ExecStart = "${inputs.dankmaterialshell.packages.${pkgs.system}.dmsCli}/bin/dms run";
         Restart = "on-failure";
       };
 

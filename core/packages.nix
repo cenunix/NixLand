@@ -45,6 +45,7 @@ in
           wofi
           wpa_supplicant_gui
           obsidian
+          stremio
           zathura
           gsettings-desktop-schemas
           # calibre
@@ -135,6 +136,7 @@ in
           ethtool
           pciutils # lspci
           usbutils # lsusb
+          docker-compose
         ]
     ++ optionals (builtins.elem device.type [ "desktop" ]) [
     ]

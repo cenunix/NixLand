@@ -11,7 +11,7 @@
     };
 
     # Different Window Managers, who will win??
-    hyprland.url = "github:hyprwm/hyprland?ref=v0.50.1";
+    hyprland.url = "github:hyprwm/hyprland?ref=v0.52.1";
 
     niri = {
       url = "github:sodiboo/niri-flake";
