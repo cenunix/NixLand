@@ -19,7 +19,7 @@
     };
 
     dankmaterialshell = {
-      url = "github:AvengeMedia/DankMaterialShell";
+      url = "github:AvengeMedia/DankMaterialShell?ref=v0.6.2";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -42,6 +42,11 @@
 
     anyrun = {
       url = "github:anyrun-org/anyrun";
+    };
+
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     nix-mineral = {

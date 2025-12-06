@@ -28,6 +28,9 @@ let
   });
 in
 {
+  imports = [
+    inputs.nur.modules.nixos.default
+  ];
   hm.home.packages =
     with pkgs;
     [ ]
@@ -45,7 +48,7 @@ in
           wofi
           wpa_supplicant_gui
           obsidian
-          stremio
+          # stremio
           zathura
           gsettings-desktop-schemas
           # calibre
@@ -54,7 +57,7 @@ in
           grimblast
           libreoffice-qt6-fresh
           libnotify
-          # jellyfin-media-player
+          nur.repos.mio.jellyfin-media-player
           thunderbird
           telegram-desktop
           bitwarden-desktop

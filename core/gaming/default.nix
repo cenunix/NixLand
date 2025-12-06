@@ -1,9 +1,10 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  ...
 }:
 let
   inherit (config) modules;
@@ -17,6 +18,8 @@ with lib;
       lutris
       wineWowPackages.waylandFull
       pokemmo-installer
+      gamescope
+      gamescope-wsi
     ];
     programs.steam = {
       enable = true;

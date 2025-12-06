@@ -1,23 +1,22 @@
 system: "base16"
-name: "Nebula Ice"
-author: "Generated from wallpaper by ChatGPT"
+name: "Nebula Ice Mono"
+author: "Based on #adc6ff"
 variant: "dark"
 palette:
-  base00: "#0a0a0a" # base (background)
-  base01: "#131313" # mantle
-  base02: "#1e1e1e" # surface0
-  base03: "#3a3a3a" # surface1 (raised for better comment visibility)
-  base04: "#505050" # surface2 (raised accordingly for contrast balance)
-  base05: "#cfd4da" # text (cooler gray, more contrast)
-  base06: "#e0e6eb" # mid-gray highlight (icy tone)
-  base07: "#ffffff" # bright text
-  base08: "#a65c7a" # red (cool magenta-red)
-  base09: "#b87a63" # orange (cooler brown-orange)
-  base0A: "#cfd98c" # yellow (icy yellow-green)
-  base0B: "#7fc7a6" # green (minty, cool green)
-  base0C: "#6fbac8" # cyan (aqua ice)
-  base0D: "#7fa8e3" # blue (icy blue)
-  base0E: "#9a85d9" # purple (cool violet)
-  base0F: "#9d7f73" # ember (muted, cooler)
-
+  base00: "#0b0e14"  # very dark blue-charcoal
+  base01: "#11141b"
+  base02: "#181b22"
+  base03: "#21242c"  # comment tone
+  base04: "#2d3039"  # borders, minimal contrast
+  base05: "#c7d0dd"  # soft, icy text
+  base06: "#e2e6ee"  # cold bright text
+  base07: "#ffffff"  # high highlight (used rarely)
+  base08: "#b7c2d9"  # muted gray-blue
+  base09: "#c0cae2"  # lighter frosty tint
+  base0A: "#d0d9ee"  # icy pale blue-white
+  base0B: "#adc6ff"  # ★ your hero color (primary)
+  base0C: "#9bb3e7"  # softened slate-blue
+  base0D: "#7a8fb8"  # gently desaturated steel-blue
+  base0E: "#a4b3d4"  # fog-blue lavender-gray
+  base0F: "#8b94a5"  # deep neutral blue-gray
 

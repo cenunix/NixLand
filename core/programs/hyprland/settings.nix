@@ -25,7 +25,25 @@ in
       ${monitorConfig}
       ${workspacesConfig}
     '';
+
+  #         "DP-2,2560x1440@239.97,1080x0,1"
+  #       "DP-1,1920x1080@240,0x0,1,transform,1"
+
   hm.wayland.windowManager.hyprland.settings = {
+    #   "monitorv2[DP-2]" = {
+    #     mode = "2560x1440@239.97";
+    #     position = "1080x0";
+    #     scale = 1;
+    #     cm = "auto";
+    #     bitdepth = 10;
+    #     # supports_wide_color = 1;
+    #     # supports_hdr = 1;
+    #     # sdr_min_luminance = 0.005;
+    #     # sdr_max_luminance = 250;
+    #   };
+    #   monitor = [
+    #     "DP-1,1920x1080@240,0x0,1,transform,1"
+    #   ];
     "$mod" = "SUPER";
     exec-once = [
       "hyprctl setcursor ${pointerCursor.name} ${toString pointerCursor.size}"
@@ -40,7 +58,7 @@ in
       no_hardware_cursors = true;
     };
     experimental = {
-      xx_color_management_v4 = false;
+      xx_color_management_v4 = true;
     };
     general = {
       gaps_in = 4;
@@ -86,8 +104,13 @@ in
       ];
     };
     render = {
-      # explicit_sync = 1;
-      # explicit_sync_kms = 0;
+      cm_fs_passthrough = 1;
+      direct_scanout = 1;
+      # cm_auto_hdr = 2;
+      # cm_enabled = 1;
+      # send_content_type = true;
+      # direct_scanout = 2;
+      # new_render_scheduling = true;
     };
     dwindle = {
       pseudotile = false; # enable pseudotiling on dwindle

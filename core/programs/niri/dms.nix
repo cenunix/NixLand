@@ -12,30 +12,30 @@ let
   colors = config.lib.stylix.colors.withHashtag;
 in
 {
-
-  hm.systemd.user.services = {
-    dms = {
-      Unit = {
-        Description = "DankMaterialShell Service";
-        After = [ "graphical-session.target" ];
-        PartOf = [ "graphical-session.target" ];
-        ConditionEnvironment = "WAYLAND_DISPLAY";
-      };
-
-      Service = {
-        ExecStart = "${inputs.dankmaterialshell.packages.${pkgs.system}.dmsCli}/bin/dms run";
-        Restart = "on-failure";
-      };
-
-      Install = {
-        WantedBy = [ "graphical-session.target" ];
-      };
-    };
-  };
+  #
+  # hm.systemd.user.services = {
+  #   dms = {
+  #     Unit = {
+  #       Description = "DankMaterialShell Service";
+  #       After = [ "graphical-session.target" ];
+  #       PartOf = [ "graphical-session.target" ];
+  #       ConditionEnvironment = "WAYLAND_DISPLAY";
+  #     };
+  #
+  #     Service = {
+  #       ExecStart = "${inputs.dankmaterialshell.packages.${pkgs.system}.dmsCli}/bin/dms run";
+  #       Restart = "on-failure";
+  #     };
+  #
+  #     Install = {
+  #       WantedBy = [ "graphical-session.target" ];
+  #     };
+  #   };
+  # };
   hm.programs.dankMaterialShell = {
     enable = true;
     # enableKeybinds = false;
-    enableSystemd = false;
+    enableSystemd = true;
     # enableSpawn = true;
     enableSystemMonitoring = true;
     enableClipboard = true;
