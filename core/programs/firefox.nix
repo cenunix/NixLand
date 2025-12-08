@@ -195,7 +195,7 @@ in
             }
 
             #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]::after {
-              background: #1c1b22 !important;
+              background: #0b0e14 !important;
               margin-left: 207px;
               z-index: 9999999;
               position: absolute;
