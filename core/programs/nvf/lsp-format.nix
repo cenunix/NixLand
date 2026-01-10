@@ -12,6 +12,7 @@
     formatter = {
       conform-nvim = {
         enable = true;
+
         setupOpts.format_on_save = {
           lsp_format = "fallback";
           timeout_ms = 500;
@@ -46,18 +47,18 @@
       enableExtraDiagnostics = true;
       nix = {
         enable = true;
-        format.package = pkgs.nixfmt-rfc-style;
-        format.type = "nixfmt";
+        # format.package = pkgs.nixfmt-rfc-style;
+        format.type = [ "nixfmt" ];
       };
       clang = {
         enable = true;
         lsp = {
           enable = true;
-          package = pkgs.llvmPackages_19.clang-tools;
+          # package = pkgs.llvmPackages_19.clang-tools;
           server = "clangd";
         };
       };
-      sql.enable = true;
+      # sql.enable = true;
       rust = {
         enable = false;
         crates.enable = true;

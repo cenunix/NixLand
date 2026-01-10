@@ -8,7 +8,7 @@
         gpu = "nvidia";
         monitors = [
           "DP-2,2560x1440@239.97,1080x0,1"
-          "DP-1,1920x1080@240,0x0,1,transform,1"
+          "DP-1,1920x1080@240,0x0,1,transform,1,bitdepth,10"
           "HDMI-A-1,3840x2160@60,auto,2"
         ];
         workspaces = [

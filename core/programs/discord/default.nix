@@ -1,11 +1,12 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, self
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  self,
+  ...
 }:
 with lib;
 let
@@ -27,7 +28,7 @@ in
       config = {
         frameless = true;
         plugins = {
-          clearURLs.enable = true;
+          ClearURLs.enable = true;
           # experiments.enable = true;
           f8Break.enable = true;
           fixImagesQuality.enable = true;
@@ -44,7 +45,7 @@ in
           readAllNotificationsButton.enable = true;
           relationshipNotifier.enable = true;
           reverseImageSearch.enable = true;
-          reviewDB.enable = true;
+          # reviewDB.enable = true;
           serverInfo.enable = true;
           shikiCodeblocks.enable = true;
           showHiddenChannels.enable = true;

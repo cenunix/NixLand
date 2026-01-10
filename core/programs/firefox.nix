@@ -67,6 +67,20 @@ in
               vimium-c
               purpleadblock
             ];
+            settings = {
+              darkreader = {
+                force = true;
+                settings = {
+                  enabled = true;
+                  theme = {
+                    mode = 1;
+                    darkSchemeBackgroundColor = colors.base00;
+                    darkSchemeTextColor = colors.base05;
+                  };
+                  previewNewDesign = true;
+                };
+              };
+            };
           };
           bookmarks = { };
           settings = {
@@ -113,162 +127,138 @@ in
               ];
             };
           };
-          userChrome = ''
-            * {
-              --button-bgcolor: ${colors.base01} !important;
-              --lwt-frame: ${colors.base00} !important;
-              --lwt-accent-color: ${colors.base00} !important;
-              --panel-background: ${colors.base00} !important;
-              --arrowpanel-background: ${colors.base00} !important;
-              --input-bgcolor: ${colors.base00} !important;
-              --toolbar-field-background-color: ${colors.base00} !important;
-              --urlbarView-separator-color: ${colors.base00} !important;
-              --toolbar-field-focus-background-color: ${colors.base00} !important;
-              --toolbar-bgcolor: ${colors.base00} !important;
-              --button-primary-color: ${colors.base05} !important;
-              --button-hover-bgcolor: ${colors.base01} !important;
-              --focus-outline-color: ${colors.base00} !important;
-              --tabs-navbar-separator-color: ${colors.base00} !important;
-              --chrome-content-separator-color: ${colors.base00} !important;
-              --button-active-bgcolor: ${colors.base00} !important;
-              --panel-separator-zap-gradient: linear-gradient(90deg, #181825 0%, #45475a 52.08%, #6c7086 100%);
-              --arrowpanel-border-color: ${colors.base05} !important;
-              --arrowpanel-color: ${colors.base05} !important;
-              --input-color: ${colors.base05} !important;
-              --toolbar-field-color: ${colors.base05} !important;
-              --lwt-text-color: ${colors.base05} !important;
-              --toolbar-color: ${colors.base05} !important;
-              --toolbar-field-focus-color: ${colors.base05} !important;
-              --newtab-text-primary-color: ${colors.base05} !important;
-              --tab-selected-textcolor: ${colors.base05} !important;
-              --tab-icon-overlay-fill: ${colors.base05} !important;
-              --toolbarbutton-icon-fill: ${colors.base05} !important;
-              --sidebar-text-color: ${colors.base05} !important;
-              --button-primary-bgcolor: ${colors.base05} !important;
-              --button-primary-hover-bgcolor: ${colors.base05} !important;
-              --button-primary-active-bgcolor: ${colors.base05} !important;
-              --urlbarView-highlight-color: ${colors.base05} !important;
-              --urlbarView-highlight-background: ${colors.base04} !important;
-              --sidebar-background: ${colors.base00} !important;
-              --inactive-titlebar-opacity: 1.0 !important;
+          userContent = ''
+            /* All internal about: pages */
+            @-moz-document url-prefix("about:"), url-prefix("chrome:") {
+              :root {
+                /* Core in-content variables */
+                --in-content-page-background:        ${colors.base00} !important;
+                --in-content-box-background:         ${colors.base00} !important;
+                --in-content-box-background-odd:     ${colors.base00} !important;
+                --in-content-table-background:       ${colors.base00} !important;
+                --in-content-table-header-background:${colors.base00} !important;
+                --in-content-dialog-header-background:${colors.base00} !important;
+                --in-content-box-info-background:    ${colors.base00} !important;
+
+                --in-content-border-color:           ${colors.base02} !important;
+                --in-content-box-border-color:       ${colors.base02} !important;
+                --card-outline-color:                ${colors.base02} !important;
+
+                --in-content-page-color:             ${colors.base05} !important;
+                --in-content-text-color:             ${colors.base05} !important;
+              }
+
+              html, body {
+                background-color: ${colors.base00} !important;
+                color: ${colors.base05} !important;
+              }
+
+              /* Generic form elements on these pages */
+              input, textarea, select {
+                background-color: ${colors.base00} !important;
+                color: ${colors.base05} !important;
+                border-color: ${colors.base02} !important;
+                box-shadow: none !important;
+              }
             }
 
+            /* 2. about:config specific bits (search bar/header that like to ignore vars) */
+            @-moz-document url("about:config") {
+              :root, html, body {
+                background-color: ${colors.base00} !important;
+                color: ${colors.base05} !important;
+              }
+
+              .sticky-container,
+              #config-main,
+              #config-container {
+                background-color: ${colors.base00} !important;
+              }
+
+              #about-config-search,
+              .config-search input[type="search"] {
+                -moz-appearance: none !important;
+                background-color: ${colors.base00} !important;
+                color: ${colors.base05} !important;
+                border: 1px solid ${colors.base02} !important;
+                box-shadow: none !important;
+              }
+            }
+                  
+          '';
+          userChrome = ''
+            :root,
+            :root[lwtheme],
+            #main-window {
+              /* Your palette */
+              --my-bg: ${colors.base00} !important;
+              --my-bg-2: ${colors.base01} !important;
+              --my-fg: ${colors.base05} !important;
+              --my-hi: ${colors.base04} !important;
+
+              /* Window / theme frame */
+              --lwt-frame: var(--my-bg) !important;
+              --lwt-accent-color: var(--my-bg) !important;
+              --lwt-text-color: var(--my-fg) !important;
+
+              /* Toolbars */
+              --toolbar-bgcolor: var(--my-bg) !important;
+              --toolbar-color: var(--my-fg) !important;
+
+              /* URL bar / fields */
+              --toolbar-field-background-color: var(--my-bg) !important;
+              --toolbar-field-focus-background-color: var(--my-bg) !important;
+              --toolbar-field-color: var(--my-fg) !important;
+              --toolbar-field-focus-color: var(--my-fg) !important;
+              --input-bgcolor: var(--my-bg) !important;
+              --input-color: var(--my-fg) !important;
+
+              /* Panels / menus */
+              --panel-background: var(--my-bg) !important;
+              --panel-color: var(--my-fg) !important;
+              --arrowpanel-background: var(--my-bg) !important;
+              --arrowpanel-color: var(--my-fg) !important;
+              --arrowpanel-border-color: var(--my-bg-2) !important;
+              --panel-separator-color: var(--my-bg-2) !important;
+
+              /* Sidebar (native sidebar + vertical tabs) */
+              --sidebar-background-color: var(--my-bg) !important;
+              --sidebar-text-color: var(--my-fg) !important;
+              --sidebar-border-color: var(--my-bg-2) !important;
+
+              /* NEW: Firefox 146-ish vertical-tabs / sidebar pane surface */
+              --tabpane-background-color: var(--my-bg) !important;     /* this was #2b2a33 in your screenshot */
+              --tabpanel-background-color: var(--my-bg) !important;    /* sometimes used alongside tabpane */
+              --tab-hover-background-color: var(--my-bg-2) !important; /* hover blend that can look “default” */
+
+              /* Buttons / hover states (often the “mystery gray”) */
+              --button-background-color: var(--my-bg-2) !important;
+              --button-color: var(--my-fg) !important;
+
+              --toolbarbutton-icon-fill: var(--my-fg) !important;
+              --toolbarbutton-hover-background: var(--my-bg-2) !important;
+              --toolbarbutton-active-background: var(--my-bg-2) !important;
+
+              /* Separators that sometimes show default theme color */
+              --tabs-navbar-separator-color: var(--my-bg) !important;
+              --chrome-content-separator-color: var(--my-bg) !important;
+
+              /* Optional highlight colors */
+              --urlbarView-highlight-color: var(--my-fg) !important;
+              --urlbarView-highlight-background: var(--my-hi) !important;
+
+              /* Keep titlebar opacity consistent */
+              --inactive-titlebar-opacity: 1.0 !important;            
+            }
             #TabsToolbar {
               visibility: collapse !important;
             }
-            :root {
-              --wide-tab-width: 300px;
-              --thin-tab-width: 35px;
-              --frame-bg: ${colors.base00};
-              --toolbar-bg: ${colors.base00};
-              --tabs-bg: ${colors.base00};
+            #PersonalToolbar,
+            #toolbar,
+            #nav-bar {
+              background-color: ${colors.base00} !important;
+              background-image: none !important;
             }
-
-            #sidebar-box > #browser,
-            #webextpanels-window {
-              background: var(--sidebar-background) !important;
-            }
-
-            /*Collapse in default state and add transition*/
-            #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"] {
-              border-right: none !important;
-              z-index: 2;
-              border-right: none !important;
-              width: 100% !important;
-              background: var(--sidebar-background);
-
-              /* lock sidebar to height by doing the inverse margin of the toolbar element */
-              z-index: 1000 !important;
-              position: relative !important;
-              margin-top: 0px !important;
-              border-right: none;
-              transition: all 200ms !important;
-
-              /* lock sidebar to specified width */
-              min-width: var(--thin-tab-width) !important;
-              max-width: var(--thin-tab-width) !important;
-              overflow: hidden !important;
-              transition-property: width;
-              transition-duration: 0.3s;
-              transition-delay: 0.3s;
-              transition-timing-function: ease-in;
-            }
-
-            #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]::after {
-              background: #0b0e14 !important;
-              margin-left: 207px;
-              z-index: 9999999;
-              position: absolute;
-              content: " ";
-              width: 1px;
-              height: 100%;
-              top: 0;
-              right: 0px;
-            }
-
-            #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:hover:after {
-              top: 42px;
-            }
-
-            #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]:hover,
-            #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]
-              #sidebar:hover {
-              min-width: var(--wide-tab-width) !important;
-              max-width: var(--wide-tab-width) !important;
-              margin-right: calc(
-                (var(--wide-tab-width) - var(--thin-tab-width)) * -1
-              ) !important;
-              transition: all 200ms !important;
-            }
-
-            #sidebar-header {
-              border: none !important;
-              border-right: 1px solid var(--sidebar-border-color);
-              background: var(--sidebar-background) !important;
-            }
-
-            #sidebar-close,
-            #sidebar-title,
-            #sidebar-switcher-arrow {
-              display: none;
-              border: none;
-            }
-
-            #sidebar-switcher-target {
-              border: none !important;
-              margin-left: 4.5px !important;
-              padding-top: 4px !important;
-              padding-bottom: 6px !important;
-            }
-
-            #sidebar-switcher-target:focus-visible:not(:hover, [open]),
-            #sidebar-close:focus-visible:not(:hover, [open]) {
-              outline: none !important;
-            }
-
-            .sidebar-splitter {
-              opacity: 0 !important;
-              width: 0px !important;
-              border: none !important;
-              --avatar-image-url: none !important;
-            }
-
-            #sidebarMenu-popup .subviewbutton {
-              min-width: 0px;
-              padding: 0;
-              margin: 0 !important;
-            }
-
-            #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]
-              + #sidebar-splitter {
-              display: none !important;
-            }
-
-            #sidebar-box[sidebarcommand="_3c078156-979c-498b-8990-85f7987dd929_-sidebar-action"]
-              #sidebar-header {
-              visibility: collapse;
-            }
-
             tab-close-button.close-icon {
               display: none;
               color: red;
@@ -300,8 +290,8 @@ in
             .urlbar-input-box {
               background-color: ${colors.base00};
             }
-            .tab-icon-image {
-              display: none;
+            #sidebar-main {
+              background-color: ${colors.base00} !important;
             }
             .tabbrowser-tab {
               color: ${colors.base05} !important;

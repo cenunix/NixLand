@@ -57,9 +57,9 @@ in
       # allow_dumb_copy = true;
       no_hardware_cursors = true;
     };
-    experimental = {
-      xx_color_management_v4 = true;
-    };
+    # experimental = {
+    # xx_color_management_v4 = true;
+    # };
     general = {
       gaps_in = 4;
       gaps_out = 4;
@@ -79,12 +79,12 @@ in
         # color_inactive = "rgb(3c4252)";
       };
       rounding = 8;
-      blur = {
-        enabled = false;
-        ignore_opacity = false;
-        size = 8;
-        passes = 2;
-      };
+      # blur = {
+      #   enabled = false;
+      #   ignore_opacity = false;
+      #   size = 8;
+      #   passes = 2;
+      # };
     };
     animations = {
       enabled = true;
@@ -114,6 +114,9 @@ in
     };
     dwindle = {
       pseudotile = false; # enable pseudotiling on dwindle
+    };
+    quirks = {
+      prefer_hdr = 1;
     };
     # gestures = {
     #   workspace_swipe = false;

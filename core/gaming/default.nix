@@ -14,10 +14,10 @@ with lib;
   config = mkIf modules.programs.gaming.enable {
     environment.systemPackages = with pkgs; [
       protonplus
-      retroarch-full
+      # retroarch-full
       lutris
       wineWowPackages.waylandFull
-      pokemmo-installer
+      # pokemmo-installer
       gamescope
       gamescope-wsi
     ];

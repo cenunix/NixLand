@@ -1,10 +1,11 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 let
   colors = config.lib.stylix.colors.withHashtag;

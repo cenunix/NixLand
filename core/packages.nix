@@ -57,7 +57,7 @@ in
           grimblast
           libreoffice-qt6-fresh
           libnotify
-          nur.repos.mio.jellyfin-media-player
+          jellyfin-desktop
           thunderbird
           telegram-desktop
           bitwarden-desktop
@@ -130,7 +130,7 @@ in
 
           # system call monitoring
           strace # system call monitoring
-          ltrace # library call monitoring
+          # ltrace # library call monitoring
           lsof # list open files
 
           # system tools

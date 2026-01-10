@@ -21,16 +21,15 @@
     firewall = {
       enable = true;
       checkReversePath = false;
-      trustedInterfaces = [ "virbr0" ];
+      trustedInterfaces = [
+        "virbr0"
+        "tailscale0"
+      ];
       allowedTCPPorts = [
-        443
-        80
-        22
+
       ];
       allowedUDPPorts = [
-        443
-        80
-        51820
+
       ];
       allowPing = false;
       logReversePathDrops = true;
@@ -70,6 +69,11 @@
     };
   };
 
+  services.tailscale = {
+    enable = true;
+    extraSetFlags = [ "--netfilter-mode=nodivert" ];
+    openFirewall = false;
+  };
   # slows down boot time
   systemd.services.NetworkManager-wait-online.enable = false;
   programs = {

@@ -7,9 +7,9 @@
   ...
 }:
 {
-  imports = [
-    "${inputs.nix-mineral}/nix-mineral.nix"
-  ];
+  # imports = [
+  #   inputs.nix-mineral/nix-mineral.nix
+  # ];
   security = {
     sudo = {
       enable = true;
