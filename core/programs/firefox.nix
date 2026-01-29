@@ -37,7 +37,18 @@ in
               "https://youtube.com"
               "https://chatgpt.com"
             ];
+          };
+          Homepage = {
+            StartPage = "homepage";
+            URL = "https://my.wgu.edu/";
+            Locked = true;
 
+            Additional = [
+              "https://boot.dev/"
+              "https://docs.aws.amazon.com"
+              "https://kubernetes.io/docs/home/"
+              "file:///home/youruser/notes/today.md"
+            ];
           };
         };
         profiles.cenunix = {
@@ -86,7 +97,7 @@ in
           settings = {
             "extensions.autoDisableScopes" = 0;
             "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
-            # "browser.startup.homepage" = "about:config";
+            # "browser.startup.homepage" = "https://docs.python.org/3/";
             "browser.uiCustomization.state" = builtins.toJSON {
               currentVersion = 20;
               newElementCount = 5;
