@@ -40,7 +40,6 @@
       lspkind.enable = true;
     };
     languages = {
-      enableLSP = true;
       enableDAP = true;
       enableFormat = true;
       enableTreesitter = true;
@@ -55,13 +54,13 @@
         lsp = {
           enable = true;
           # package = pkgs.llvmPackages_19.clang-tools;
-          server = "clangd";
+          servers = [ "clangd" ];
         };
       };
       # sql.enable = true;
       rust = {
         enable = false;
-        crates.enable = true;
+        extensions.crates-nvim.enable = true;
       };
       html.enable = true;
       ts.enable = true;

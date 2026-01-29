@@ -1,7 +1,8 @@
-{ inputs
-, pkgs
-, config
-, ...
+{
+  inputs,
+  pkgs,
+  config,
+  ...
 }:
 let
   devinit = pkgs.writeShellScriptBin "devinit" ''
@@ -131,6 +132,7 @@ in
         enableCompletion = true;
         autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
+        dotDir = "${config.hm.xdg.configHome}/zsh";
         sessionVariables = {
           LC_ALL = "en_US.UTF-8";
           ZSH_AUTOSUGGEST_USE_ASYNC = "true";

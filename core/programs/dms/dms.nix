@@ -35,7 +35,7 @@ in
   hm.programs.dankMaterialShell = {
     enable = true;
     # enableKeybinds = false;
-    enableSystemd = true;
+    systemd.enable = true;
     # enableSpawn = true;
     enableSystemMonitoring = true;
     enableClipboard = true;

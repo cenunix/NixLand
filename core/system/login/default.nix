@@ -24,42 +24,27 @@ in
       };
 
     };
-    environment.systemPackages = with pkgs; [
-
-      sddm-astronaut
-    ];
 
     services = {
       displayManager.gdm = {
         enable = true;
       };
-      # displayManager.sddm = {
-      #   enable = false;
-      #   package = pkgs.kdePackages.sddm;
-      #   wayland.enable = true;
-      #   theme = "sddm-astronaut-theme";
-      #   # defaultSession = "hyprland";
-      #   extraPackages = with pkgs; [
-      #     # sddm-astronaut
-      #     kdePackages.qtmultimedia
-      #     kdePackages.qtvirtualkeyboard
-      #     kdePackages.svgpart
-      #   ];
-      # };
 
       logind =
         if (sys.server.enable) then
           {
-            lidSwitch = "ignore";
-            lidSwitchExternalPower = "ignore";
+            settings.Login = {
+              HandleLidSwitch = "ignore";
+              HandleLidSwitchExternalPower = "ignore";
+            };
           }
         else
           {
-            lidSwitch = "suspend-then-hibernate";
-            lidSwitchExternalPower = "lock";
             settings.Login = {
               HandlePowerKey = "suspend-then-hibernate";
               HibernateDelaySec = 3600;
+              HandleLidSwitch = "suspend-then-hibernate";
+              HandleLidSwitchExternalPower = "lock";
             };
           };
     };

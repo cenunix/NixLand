@@ -10,22 +10,6 @@
 with lib;
 let
   device = config.modules.device;
-
-  cursor-patch = pkgs.code-cursor.overrideAttrs (old: rec {
-    version = "1.7.38";
-    pname = "cursor";
-
-    src = pkgs.appimageTools.extract {
-      inherit pname version;
-      src = pkgs.fetchurl {
-        url = "https://downloads.cursor.com/production/fe5d1728063e86edeeda5bebd2c8e14bf4d0f96a/linux/x64/Cursor-1.7.38-x86_64.AppImage";
-        hash = "sha256-52QJVbXO3CYeL4vVZ249xabS7AoYFDOxKCQ6m3vB+vE=";
-      };
-    };
-
-    # 👇 make sure it matches the extracted AppImage folder
-    sourceRoot = "${pname}-${version}-extracted/usr/share/cursor";
-  });
 in
 {
   imports = [
@@ -63,7 +47,6 @@ in
           bitwarden-desktop
           chromium
           todoist-electron
-          cursor-patch
 
           #media apps
           mpv

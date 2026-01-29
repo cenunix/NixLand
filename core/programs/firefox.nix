@@ -16,7 +16,7 @@ let
   ];
   startpage = pkgs.substituteAll { src = ./startpage.html; };
   user = config.modules.system.username;
-  addons = inputs.firefox-addons.packages.${pkgs.system};
+  addons = inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system};
   colors = config.lib.stylix.colors.withHashtag;
 in
 {
