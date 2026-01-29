@@ -13,10 +13,9 @@
     ./discord
     ./hyprland
     ./hyprlock
-    # ./hyprpanel
     ./lf
     ./nvf
-    ./niri
+    ./dms
     ./spotify
     ./firefox.nix
     ./git.nix
