@@ -8,11 +8,9 @@
 }:
 {
   imports = [
-    ./anyrun
     ./btop
     ./discord
     ./hyprland
-    ./hyprlock
     ./lf
     ./nvf
     ./dms

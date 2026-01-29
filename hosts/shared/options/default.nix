@@ -8,7 +8,6 @@ let
 in
 {
   imports = [
-    ./colors.nix
     ./device
     ./system
     ./usrEnv
