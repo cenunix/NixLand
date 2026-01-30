@@ -11,12 +11,7 @@
     };
 
     # Different Window Managers, who will win??
-    hyprland.url = "github:hyprwm/hyprland?ref=v0.52.2";
-
-    niri = {
-      url = "github:sodiboo/niri-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    hyprland.url = "github:hyprwm/hyprland?ref=v0.53.3";
 
     dankmaterialshell = {
       url = "github:AvengeMedia/DankMaterialShell?ref=v0.6.2";
@@ -33,17 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      # IMPORTANT: we're using "libgbm" and is only available in unstable so ensure
-      # to have it up-to-date or simply don't specify the nixpkgs input
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    anyrun = {
-      url = "github:anyrun-org/anyrun";
-    };
-
     nur = {
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,11 +39,12 @@
     };
 
     wallpkgs.url = "github:NotAShelf/wallpkgs"; # no need to follow nixpkgs
+
     stylix.url = "github:danth/stylix";
+
     nixcord.url = "github:kaylorben/nixcord";
-    # hyprpanel.url = "github:cenunix/HyprPanel/fix";
+
     spicetify-nix.url = "github:Gerg-L/spicetify-nix";
-    nur-atarax.url = "github:AtaraxiaSjel/nur";
   };
 
   outputs =

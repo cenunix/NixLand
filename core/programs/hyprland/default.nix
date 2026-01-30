@@ -23,13 +23,13 @@ with lib;
     withUWSM = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    wlr-randr
-    wl-clipboard
-    hyprsunset
-    grimblast
-    brightnessctl
-  ];
+  # environment.systemPackages = with pkgs; [
+  #   wlr-randr
+  #   wl-clipboard
+  #   hyprsunset
+  #   grimblast
+  #   brightnessctl
+  # ];
 
   hm = {
     wayland.windowManager.hyprland = {
