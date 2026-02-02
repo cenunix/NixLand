@@ -68,7 +68,7 @@
       };
       usrEnv = {
         isWayland = true;
-        desktop = "Niri";
+        desktop = "Hyprland";
         windowManager = true;
         useHomeManager = true;
         autologin = false;
