@@ -1,15 +1,17 @@
-{ inputs
-, outputs
-, lib
-, config
-, pkgs
-, osConfig
-, ...
+{
+  inputs,
+  outputs,
+  lib,
+  config,
+  pkgs,
+  osConfig,
+  ...
 }:
 let
   fileManager = config.modules.programs.default.fileManager;
   browser = [ "librewolf.desktop" ];
   zathura = [ "org.pwmt.zathura.desktop.desktop" ];
+  videoPlayer = [ "mpv.desktop" ];
   # filemanager = [ "thunar.desktop" ];
 
   associations = {
@@ -26,8 +28,37 @@ let
     "application/x-extension-xhtml" = browser;
     "application/x-extension-xht" = browser;
 
-    "audio/*" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.dekstop" ];
+    # --- Video ---
+    "video/mp4" = videoPlayer;
+    "video/mpeg" = videoPlayer;
+    "video/quicktime" = videoPlayer;
+    "video/x-matroska" = videoPlayer;
+    "video/webm" = videoPlayer;
+    "video/x-msvideo" = videoPlayer;
+    "video/x-flv" = videoPlayer;
+    "video/x-ms-wmv" = videoPlayer;
+    "video/ogg" = videoPlayer;
+    "video/3gpp" = videoPlayer;
+    "video/3gpp2" = videoPlayer;
+    "video/x-theora+ogg" = videoPlayer;
+    "video/x-m4v" = videoPlayer;
+    "video/dv" = videoPlayer;
+    "video/avi" = videoPlayer;
+
+    # --- Audio ---
+    "audio/mpeg" = videoPlayer; # mp3
+    "audio/mp4" = videoPlayer; # m4a
+    "audio/aac" = videoPlayer;
+    "audio/flac" = videoPlayer;
+    "audio/ogg" = videoPlayer;
+    "audio/opus" = videoPlayer;
+    "audio/wav" = videoPlayer;
+    "audio/x-wav" = videoPlayer;
+    "audio/webm" = videoPlayer;
+    "audio/x-ms-wma" = videoPlayer;
+    "audio/x-aiff" = videoPlayer;
+    "audio/x-matroska" = videoPlayer;
+
     "image/*" = [ "imv.desktop" ];
     "application/json" = browser;
     "application/pdf" = zathura;
