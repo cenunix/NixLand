@@ -20,6 +20,7 @@ with lib;
       # pokemmo-installer
       gamescope
       gamescope-wsi
+      prismlauncher
     ];
     programs.steam = {
       enable = true;
