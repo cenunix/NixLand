@@ -104,8 +104,8 @@ in
       ];
     };
     render = {
-      cm_fs_passthrough = 1;
-      direct_scanout = 1;
+      # cm_fs_passthrough = 1;
+      # direct_scanout = 1;
       # cm_auto_hdr = 2;
       # cm_enabled = 1;
       # send_content_type = true;
@@ -116,7 +116,7 @@ in
       pseudotile = false; # enable pseudotiling on dwindle
     };
     quirks = {
-      prefer_hdr = 1;
+      prefer_hdr = 0;
     };
     # gestures = {
     #   workspace_swipe = false;
